@@ -1,12 +1,7 @@
 const path = require('path')
+const { libs } = require('./files')
 module.exports = {
-  entry: [
-    './bin/libs/laya.core.js',
-    './bin/libs/laya.webgl.js',
-    './bin/libs/laya.ui.js',
-    './bin/libs/laya.physics.js',
-    './src/Main.ts',
-  ],
+  entry: [...libs, './src/Main.ts'],
   devtool: 'inline-source-map',
   module: {
     rules: [
