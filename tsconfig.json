@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noEmitHelpers": false,
+    "sourceMap": true,
+    "lib": ["es2018", "dom"]
+  },
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,5 @@
+<page>
+   <item name="MainScene.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="scene/MainScene.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="view/Loading.scene" props="" ifExport="内嵌模式" aName=""/>
+</page>
