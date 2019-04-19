@@ -5,7 +5,7 @@ export class Singleton {
   /**
    * default constractor
    */
-  public constructor() {}
+  constructor() {}
 
   public static _instance: any
   /**

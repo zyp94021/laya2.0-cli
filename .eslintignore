@@ -1,7 +1,7 @@
 .laya
 .vscode
-.bin
-.dist
+bin
+dist
 laya
 libs
 node_modules
