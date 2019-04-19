@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.pro.js",
-    "serve": "http-server -p 2222 -s -g -c-1",
+    "serve": "http-server -s -g -c-1 -o",
     "start": "webpack --mode development --watch --progress --color --config webpack.dev.js"
   },
   "keywords": [],
