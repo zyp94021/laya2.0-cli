@@ -2,6 +2,7 @@ import { ui } from '../ui/layaMaxUI'
 import { IView } from '../core/game/scenes/interface/IView'
 import { ILayer } from '../core/game/scenes/interface/ILayer'
 import * as moment from 'moment'
+import GameApp from '../core/game/GameApp';
 export default class Loading extends ui.view.LoadingUI implements IView {
   public layer: ILayer
   public moveY = false
@@ -28,5 +29,6 @@ export default class Loading extends ui.view.LoadingUI implements IView {
     Object.entries(data).map(item => {
       console.log(item)
     })
+ 
   }
 }

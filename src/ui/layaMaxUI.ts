@@ -16,7 +16,9 @@ export module ui.scene {
 export module ui.view {
     export class LoadingUI extends Laya.View {
 		public tank:Laya.Clip;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":0,"centerX":0},"compId":3}],"loadList":["Characters/Tank_8.png"],"loadList3D":[]};
+		public btn_close:Laya.Button;
+		public btn_connect:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":337,"x":282.5,"var":"btn_close","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":231,"x":282.5,"var":"btn_connect","skin":"comp/button.png","label":"connect"},"compId":5}],"loadList":["Characters/Tank_8.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

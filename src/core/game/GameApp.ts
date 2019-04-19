@@ -6,6 +6,7 @@ import { ViewMgr } from './scenes/ViewMgr'
 import { StringUtil } from './utils/StringUtil';
 import { TimeUtil } from './utils/TimeUtil';
 import { ViewConst } from './scenes/ViewConst';
+import socket from '../../net/socket';
 export default class GameApp {
   // 全局配置数据
   public static GlobalData: any = null
@@ -43,5 +44,8 @@ export default class GameApp {
   }
   public static get TimeUtil(): TimeUtil {
     return TimeUtil.CreateOrGet()
+  }
+  public static get Socket():socket{
+    return socket.CreateOrGet()
   }
 }
