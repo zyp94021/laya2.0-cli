@@ -111,7 +111,7 @@ export default class Socket extends Singleton {
     var param = {
       headers: {
         uid: 'hejunjie',
-        'func_name': funcName,
+        func_name: funcName,
         nonce: nonce,
       },
       params: data,
