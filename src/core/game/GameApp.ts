@@ -3,7 +3,7 @@ import { Service } from '../service/Service'
 import { Dispatcher } from '../service/dispatcher/Dispatcher'
 import { LayerMgr } from './scenes/LayerMgr'
 import { ViewMgr } from './scenes/ViewMgr'
-import socket from '../../net/socket';
+import Socket from '../../net/socket'
 import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
 import { ViewConst } from './scenes/ViewConst'
@@ -45,7 +45,7 @@ export default class GameApp {
   public static get TimeUtil(): TimeUtil {
     return TimeUtil.CreateOrGet()
   }
-  public static get Socket():socket{
-    return socket.CreateOrGet()
+  public static get Socket(): Socket {
+    return Socket.CreateOrGet()
   }
 }
