@@ -2,20 +2,16 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const hash = Math.random().toFixed(5) * 100000
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const crypto = require('crypto')
+const hash = crypto.createHash('sha256').digest('hex')
 
 const fs = require('fs')
 const { libs, skipFiles, skipCopy } = require('./conf')
-//解析需要遍历的文件夹，我这以E盘根目录为例
 const filePath = path.resolve(__dirname, 'bin')
 
-//调用文件遍历方法
 const version = {}
 
-/**
- * 文件遍历方法
- * @param filePath 需要遍历的文件路径
- */
 const fileDisplay = filePath => {
   //根据文件路径读取文件，返回文件列表
   fs.readdir(filePath, (err, files) => {
@@ -91,5 +87,10 @@ module.exports = {
       template: 'bin/index_tel.html',
     }),
     new CleanWebpackPlugin(),
+    new ImageminPlugin({
+      pngquant: {
+        quality: '85',
+      },
+    }),
   ],
 }
