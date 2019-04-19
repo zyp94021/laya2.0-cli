@@ -1,4 +1,4 @@
-import { ILayer } from "./ILayer";
+import { ILayer } from './ILayer'
 
 export interface IView extends Laya.View {
   open(...args: any[]): void

@@ -1,9 +1,9 @@
 import { IView } from './interface/IView'
-import { Singleton } from '../../base/Singleton';
-import { ViewConst } from './ViewConst';
+import { Singleton } from '../../base/Singleton'
+import { ViewConst } from './ViewConst'
 
 export class ViewMgr extends Singleton {
-  constructor() {
+  public constructor() {
     super()
   }
   private views: Map<string, IView> = new Map<string, IView>()
@@ -13,10 +13,10 @@ export class ViewMgr extends Singleton {
       return this.views.get(key)
     }
   }
-  public setView(key, view: IView) {
+  public setView(key, view: IView): void {
     this.views.set(key, view)
   }
-  public openView(key, ...args) {
+  public openView(key, ...args): void {
     let view = this.openViews.get(key)
     if (view) {
       view.open.apply(view, args)
@@ -30,7 +30,7 @@ export class ViewMgr extends Singleton {
       console.error('view不存在')
     }
   }
-  public closeView(vieworkey: any) {
+  public closeView(vieworkey: any): void {
     let view: IView
     if (vieworkey in ViewConst) {
       view = this.openViews.get(vieworkey)
@@ -43,7 +43,7 @@ export class ViewMgr extends Singleton {
       return
     }
   }
-  public isOpen(vieworkey) {
+  public isOpen(vieworkey): boolean {
     if (vieworkey in ViewConst) {
       return this.openViews.has(vieworkey)
     } else {

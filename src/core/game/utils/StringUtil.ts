@@ -1,7 +1,7 @@
-import { Singleton } from "../../base/Singleton";
+import { Singleton } from '../../base/Singleton'
 
 export class StringUtil extends Singleton {
-    constructor() {
-        super()
-    }
+  public constructor() {
+    super()
+  }
 }

@@ -1,12 +1,12 @@
 import { MainController } from './MainController'
-import { service } from '../service/Service'
+import { Service } from '../service/Service'
 import { Dispatcher } from '../service/dispatcher/Dispatcher'
 import { LayerMgr } from './scenes/LayerMgr'
 import { ViewMgr } from './scenes/ViewMgr'
-import { StringUtil } from './utils/StringUtil';
-import { TimeUtil } from './utils/TimeUtil';
-import { ViewConst } from './scenes/ViewConst';
 import socket from '../../net/socket';
+import { StringUtil } from './utils/StringUtil'
+import { TimeUtil } from './utils/TimeUtil'
+import { ViewConst } from './scenes/ViewConst'
 export default class GameApp {
   // 全局配置数据
   public static GlobalData: any = null
@@ -19,7 +19,7 @@ export default class GameApp {
     return new Promise((resolve, reject) => {
       GameApp.GlobalData = Laya.loader.getRes('conf/global.json')
       //帧轮询
-      service.Service.Init()
+      Service.Init()
       this.controller
       GameApp.viewMgr.openView(ViewConst.MAIN)
     })
@@ -29,7 +29,7 @@ export default class GameApp {
     return MainController.CreateOrGet()
   }
   public static get dispatcher(): Dispatcher {
-    return service.Service.dispatcher
+    return Service.dispatcher
   }
 
   public static get layerMgr(): LayerMgr {

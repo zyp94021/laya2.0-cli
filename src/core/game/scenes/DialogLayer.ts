@@ -1,10 +1,14 @@
 import GameApp from '../GameApp'
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
-
+class Mask extends Laya.View {
+  public constructor() {
+    super()
+  }
+}
 export class DialogLayer extends BaseLayer implements ILayer {
   // private mMask
-  public init() {
+  public init(): void {
     super.init()
   }
 
@@ -12,22 +16,30 @@ export class DialogLayer extends BaseLayer implements ILayer {
 
   private masks: Map<string, Laya.View> = new Map()
 
-  public openView(view: Laya.View, ...args) {
+  public openView(view: Laya.View, ...args: any[]): void {
     let mask = this.masks.get(view.name)
     if (!mask) {
       mask = new Mask()
-      mask.on(Laya.Event.CLICK, this, () => {
-        GameApp.viewMgr.closeView(view)
-      })
+      mask.on(
+        Laya.Event.CLICK,
+        this,
+        (): void => {
+          GameApp.viewMgr.closeView(view)
+        },
+      )
       this.masks.set(view.name, mask)
     }
     mask.width = Laya.stage.width
     mask.height = Laya.stage.height
     this.masks.set(view.name, mask)
     this.addChild(mask)
-    GameApp.dispatcher.Observe(Message.CLOSE_DIALOG, this, () => {
-      GameApp.viewMgr.closeView(view)
-    })
+    GameApp.dispatcher.Observe(
+      Message.CLOSE_DIALOG,
+      this,
+      (): void => {
+        GameApp.viewMgr.closeView(view)
+      },
+    )
     super.openView.apply(this, [view, ...args])
     view.anchorX = 0.5
     view.anchorY = 0.5
@@ -42,19 +54,17 @@ export class DialogLayer extends BaseLayer implements ILayer {
       { scaleX: 1.05, scaleY: 1.05 },
       100,
       null,
-      new Laya.Handler(this, () => {
-        let tween = new Laya.Tween()
-        tween.to(view, { scaleX: 1, scaleY: 1 }, 100, null)
-      }),
+      new Laya.Handler(
+        this,
+        (): void => {
+          let tween = new Laya.Tween()
+          tween.to(view, { scaleX: 1, scaleY: 1 }, 100, null)
+        },
+      ),
     )
   }
-  public closeView(view: any) {
+  public closeView(view: any): void {
     this.removeChild(this.masks.get(view.name))
     super.closeView(view)
-  }
-}
-class Mask extends Laya.View {
-  constructor() {
-    super()
   }
 }

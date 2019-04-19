@@ -1,0 +1,13 @@
+.laya
+.vscode
+.bin
+.dist
+laya
+libs
+node_modules
+release
+src/ui
+src/GameConfig.ts
+conf.js
+webpack.dev.js
+webpack.pro.js
