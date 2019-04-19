@@ -1,4 +1,3 @@
 export enum ViewConst {
-    MAIN = 1,
+  MAIN = 1,
 }
-

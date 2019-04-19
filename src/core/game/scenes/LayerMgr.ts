@@ -4,7 +4,7 @@ import { DialogLayer } from './DialogLayer'
 
 import { BaseLayer } from './BaseLayer'
 import { ViewLayer } from './ViewLayer'
-import { Singleton } from '../../base/Singleton';
+import { Singleton } from '../../base/Singleton'
 
 export enum LayerConst {
   main = 1,
@@ -14,7 +14,7 @@ export enum LayerConst {
   loading,
 }
 export class LayerMgr extends Singleton {
-  constructor() {
+  public constructor() {
     super()
   }
 
@@ -36,7 +36,7 @@ export class LayerMgr extends Singleton {
     layer.init()
     return layer
   }
-  public getLayer(key) {
+  public getLayer(key): void {
     let layer
     if (this.layers.get(key)) {
       layer = this.layers.get(key)
@@ -47,19 +47,19 @@ export class LayerMgr extends Singleton {
     return layer
   }
 
-  public get mainLayer() {
+  public get mainLayer(): void {
     return this.getLayer(LayerConst.main)
   }
-  public get viewLayer() {
+  public get viewLayer(): void {
     return this.getLayer(LayerConst.view)
   }
-  public get shareLayer() {
+  public get shareLayer(): void {
     return this.getLayer(LayerConst.share)
   }
-  public get dialogLayer() {
+  public get dialogLayer(): void {
     return this.getLayer(LayerConst.dialog)
   }
-  public get loadingLayer() {
+  public get loadingLayer(): void {
     return this.getLayer(LayerConst.loading)
   }
 }

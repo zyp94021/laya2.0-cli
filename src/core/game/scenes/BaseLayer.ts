@@ -1,7 +1,7 @@
 import { IView } from './interface/IView'
 
 export class BaseLayer extends Laya.View {
-  public init() {
+  public init(): void {
     this.width = Laya.stage.width
     this.height = Laya.stage.height
     this.hitTestPrior = true
@@ -9,7 +9,7 @@ export class BaseLayer extends Laya.View {
     this.mouseEnabled = true
     Laya.stage.addChild(this)
   }
-  public openView(view: IView, ...args) {
+  public openView(view: IView, ...args): void {
     if (view.open) {
       view.open.apply(view, args)
     }
@@ -18,7 +18,7 @@ export class BaseLayer extends Laya.View {
     this.mouseThrough = false
     this.addChild(view)
   }
-  public closeView(view: IView) {
+  public closeView(view: IView): void {
     if (view.close) {
       view.close()
     }

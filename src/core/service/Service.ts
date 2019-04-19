@@ -1,14 +1,9 @@
-import { Dispatcher } from "./dispatcher/Dispatcher";
+import { Dispatcher } from './dispatcher/Dispatcher'
 
-export module service {
-    export class Service {
-        public static Init(): void {
-            service
-        }
+export class Service {
+  public static Init(): void {}
 
-        public static get dispatcher(): Dispatcher {
-            return Dispatcher.CreateOrGet()
-        }
-
-    }
+  public static get dispatcher(): Dispatcher {
+    return Dispatcher.CreateOrGet()
+  }
 }

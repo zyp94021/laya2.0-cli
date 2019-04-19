@@ -4,7 +4,7 @@ export class GlowFilter {
   private blur: number
   private offX: number
   private offY: number
-  constructor() {}
+  public constructor() {}
   public set owner(value: any) {
     this.sprite = value
     this.sprite.frameOnce(2, this, this.onLoaded)

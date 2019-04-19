@@ -3,18 +3,18 @@ import { BaseLayer } from './BaseLayer'
 import { IView } from './interface/IView'
 
 import GameApp from '../GameApp'
-import { ViewConst } from './ViewConst';
+import { ViewConst } from './ViewConst'
 
 const dis = 100
 const time = 240
 export class ViewLayer extends BaseLayer {
-  public init() {
+  public init(): void {
     super.init()
   }
 
   private openViews: IView[] = []
 
-  public openView(view: any, ...args) {
+  public openView(view: any, ...args): void {
     let lastView
     let tween1 = new Laya.Tween()
     if (this.openViews.length > 0) {
@@ -31,7 +31,7 @@ export class ViewLayer extends BaseLayer {
     tween2.to(view, { x: 0 }, time, null, null)
   }
 
-  public closeView(view: any) {
+  public closeView(view: any): void {
     this.openViews.pop()
     let lastView
     let tween1 = new Laya.Tween()
@@ -49,9 +49,12 @@ export class ViewLayer extends BaseLayer {
       { x: Laya.stage.width },
       time,
       null,
-      new Laya.Handler(this, () => {
-        super.closeView(view)
-      }),
+      new Laya.Handler(
+        this,
+        (): void => {
+          super.closeView(view)
+        },
+      ),
     )
   }
 }

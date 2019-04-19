@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const hash = Math.random().toFixed(5) * 100000
 
 const fs = require('fs')
-const { libs, skipFiles, skipCopy } = require('./files')
+const { libs, skipFiles, skipCopy } = require('./config')
 //解析需要遍历的文件夹，我这以E盘根目录为例
 const filePath = path.resolve(__dirname, 'bin')
 
@@ -49,7 +49,7 @@ const fileDisplay = filePath => {
 }
 fileDisplay(filePath)
 module.exports = {
-  entry: [...libs, '@babel/polyfill', './src/Main.ts'],
+  entry: { ...libs, polyfill: '@babel/polyfill', index: './src/Main.ts' },
   module: {
     rules: [
       {
@@ -64,7 +64,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist/'),
-    filename: `bundle.${hash}.js`,
+    filename: `[name].bundle.${hash}.js`,
   },
   plugins: [
     new CopyPlugin([

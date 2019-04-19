@@ -26,11 +26,11 @@ export class MainController extends Singleton {
   }
   private initView() {
     for (let layer in this.key_view) {
-      for (let key_view of this.key_view[layer]) {
-        const view = new key_view[1](GameApp.layerMgr.getLayer(Number(layer))) as IView
+      for (let keyView of this.key_view[layer]) {
+        const view = new keyView[1](GameApp.layerMgr.getLayer(Number(layer))) as IView
         // view.zOrder = key_view[0]
-        view.name = key_view[0]
-        GameApp.viewMgr.setView(key_view[0], view)
+        view.name = keyView[0]
+        GameApp.viewMgr.setView(keyView[0], view)
       }
     }
   }

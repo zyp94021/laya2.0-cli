@@ -3,13 +3,13 @@ export class Scroller {
   private elasticBackTime: number
   private elasticDistance: number
   private direction: string = 'v'
-  constructor() {}
+  public constructor() {}
   public set owner(value: any) {
     this.box = value
     this.box.frameOnce(2, this, this.onLoaded)
   }
 
-  private onLoaded(): void {
+  private onLoaded() {
     if (this.box instanceof Laya.Panel) {
       let panel: Laya.Panel = this.box
       if (this.direction === 'v') {

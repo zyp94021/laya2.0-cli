@@ -1,7 +1,7 @@
 ﻿// 最上层toast
 
 class Toast {
-  public static toasts: Array<Toast> = []
+  public static toasts: Toast[] = []
 
   private toast: Laya.Box
 
@@ -34,72 +34,59 @@ class Toast {
     this.toast.zOrder = 99999
     this.toast.top = y
     this.toast.centerX = 0
-    let toast_msg = new Laya.Label()
-    toast_msg.text = msg
-    toast_msg.fontSize = fontSize
-    toast_msg.color = fontColor
-    toast_msg.centerX = 0
-    toast_msg.centerY = 0
+    let toastMsg = new Laya.Label()
+    toastMsg.text = msg
+    toastMsg.fontSize = fontSize
+    toastMsg.color = fontColor
+    toastMsg.centerX = 0
+    toastMsg.centerY = 0
 
-    this.toast.width = toast_msg.width + w
+    this.toast.width = toastMsg.width + w
     this.toast.height = h
 
-    let toast_bg = new Laya.Sprite()
+    let toastBg = new Laya.Sprite()
 
-    GraphicsDrawUtil.drawRounded(
-      toast_bg.graphics,
-      0,
-      0,
-      0,
-      0,
-      this.toast.width,
-      this.toast.height,
-      circle,
-      bgColor,
-    )
+    GraphicsDrawUtil.drawRounded(toastBg.graphics, 0, 0, 0, 0, this.toast.width, this.toast.height, circle, bgColor)
 
-    toast_bg.alpha = alpha
+    toastBg.alpha = alpha
     this.toast.alpha = 0
-    this.toast.addChild(toast_bg)
-    this.toast.addChild(toast_msg)
+    this.toast.addChild(toastBg)
+    this.toast.addChild(toastBg)
     let tween1 = new Laya.Tween()
     let tween2 = new Laya.Tween()
     tween1.to(this.toast, { alpha: 1 }, 800, Laya.Ease.quintOut)
-    tween2.to(
-      this.toast,
-      { alpha: 0 },
-      500,
-      Laya.Ease.quintOut,
-      Laya.Handler.create(this, this.remove),
-      1300,
-    )
+    tween2.to(this.toast, { alpha: 0 }, 500, Laya.Ease.quintOut, Laya.Handler.create(this, this.remove), 1300)
   }
 
-  public remove() {
+  public remove(): void {
     Toast.toasts.shift()
     this.toast.removeSelf()
   }
 
-  public static removeAll() {
+  public static removeAll(): void {
     if (Toast.toasts && Toast.toasts.length) {
-      Toast.toasts.forEach(item => {
-        item.toast.removeSelf()
-      })
+      Toast.toasts.forEach(
+        (item): void => {
+          item.toast.removeSelf()
+        },
+      )
     }
   }
 
-  public static launch(msg: string, y: number = null) {
+  public static launch(msg: string, y: number = null): void {
     let toast = new Toast(msg, y)
-    this.toasts.forEach(item => {
-      if (item.toast.y < item.style.top) {
-        item.toast.removeSelf()
-        this.toasts.shift()
-      } else {
-        item.finallyY = item.finallyY - item.style.h - item.style.spaceH
-        let tween3 = new Laya.Tween()
-        tween3.to(item.toast, { y: item.finallyY }, 200)
-      }
-    })
+    this.toasts.forEach(
+      (item): void => {
+        if (item.toast.y < item.style.top) {
+          item.toast.removeSelf()
+          this.toasts.shift()
+        } else {
+          item.finallyY = item.finallyY - item.style.h - item.style.spaceH
+          let tween3 = new Laya.Tween()
+          tween3.to(item.toast, { y: item.finallyY }, 200)
+        }
+      },
+    )
     Laya.stage.addChild(toast.toast)
 
     this.toasts.push(toast)
