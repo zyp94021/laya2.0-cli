@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const hash = Math.random().toFixed(5) * 100000
 
 const fs = require('fs')
-const { libs, skipFiles, skipCopy } = require('./config')
+const { libs, skipFiles, skipCopy } = require('./conf')
 //解析需要遍历的文件夹，我这以E盘根目录为例
 const filePath = path.resolve(__dirname, 'bin')
 
@@ -64,7 +64,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist/'),
-    filename: `[name].bundle.${hash}.js`,
+    filename: chunkData => (chunkData.chunk.name === 'index' ? `[name].bundle.${hash}.js` : `[name].bundle.js`),
   },
   plugins: [
     new CopyPlugin([

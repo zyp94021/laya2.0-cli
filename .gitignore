@@ -1,3 +1,5 @@
 node_modules
 dist
 release
+yarn-error.log
+bin/bundle.js

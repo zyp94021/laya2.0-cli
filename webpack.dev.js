@@ -2,7 +2,7 @@ const path = require('path')
 const { libs } = require('./conf')
 
 module.exports = {
-  entry: { ...libs, index: './src/Main.ts' },
+  entry: [...libs.laya, './src/Main.ts'],
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -18,6 +18,6 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './bin'),
-    filename: '[index].bundle.js',
+    filename: 'bundle.js',
   },
 }
