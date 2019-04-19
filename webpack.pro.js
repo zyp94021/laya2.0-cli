@@ -46,6 +46,39 @@ const fileDisplay = filePath => {
 fileDisplay(filePath)
 module.exports = {
   entry: { ...libs, polyfill: '@babel/polyfill', index: './src/Main.ts' },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //     minSize: 20000,
+  //     //其他入口chunk引用的次数
+  //     minChunks: 1,
+  //     //默认使用name + hash生成文件名
+  //     name: true,
+  //     //使用自定义缓存组
+  //     cacheGroups: {
+  //       //公共模块
+  //       commons: {
+  //         name: 'common',
+  //         //缓存优先级设置
+  //         priority: 10,
+  //         //从入口chunk提取
+  //         chunks: 'initial',
+  //       },
+  //       //提取第三方库
+  //       vendors: {
+  //         //符合条件的放入当前缓存组
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name: 'vendors',
+  //         chunks: 'all',
+  //       },
+  //     },
+  //   },
+  //   //提取webpack运行文件
+  //   runtimeChunk: {
+  //     name: 'manifest',
+  //   },
+  // },
+
   module: {
     rules: [
       {
