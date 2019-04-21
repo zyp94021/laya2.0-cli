@@ -5,6 +5,7 @@ import { ViewConst } from '../core/game/scenes/ViewConst'
 import { BaseLayer } from '../core/game/scenes/BaseLayer'
 import DialogTest from './DialogTest'
 import ViewTest from './ViewTest'
+import Loading from './Loading'
 @View(BaseLayer)
 export default class BaseTest extends ui.view.BaseTestUI implements IView {
   static viewKey = ViewConst.BaseTest
@@ -24,10 +25,13 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
     })
 
     this.dialogBtn.on(Laya.Event.CLICK, this, () => {
-      openView(DialogTest)
+      openView(DialogTest, 1, 2, 3, 4, 5)
     })
     this.viewBtn.on(Laya.Event.CLICK, this, () => {
-      openView(ViewTest)
+      openView(ViewTest, 1, 2, 3, 4, 5)
+    })
+    this.loadingBtn.on(Laya.Event.CLICK, this, () => {
+      openView(Loading, 1, 2, 3, 4, 5)
     })
   }
   public openCb() {

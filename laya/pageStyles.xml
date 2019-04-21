@@ -5,4 +5,5 @@
    <item name="view/DialogTest.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="view/BaseTest.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="view/ViewTest.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="view/ViewTest1.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

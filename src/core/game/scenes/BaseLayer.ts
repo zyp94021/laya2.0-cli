@@ -2,6 +2,7 @@ import { IView } from './interface/IView'
 import { LayerConst } from './LayerConst'
 import { ILayer } from './interface/ILayer'
 export class BaseLayer extends Laya.View implements ILayer {
+  scene: Laya.Scene
   constructor(scene: Laya.Scene) {
     super()
     this.width = scene.width

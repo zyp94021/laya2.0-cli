@@ -1,6 +1,6 @@
 import { ui } from '../ui/layaMaxUI'
 import { IView } from '../core/game/scenes/interface/IView'
-import { View } from '../decorators/LayerViewMgr'
+import { View, closeView } from '../decorators/LayerViewMgr'
 import { ViewConst } from '../core/game/scenes/ViewConst'
 import { DialogLayer } from '../core/game/scenes/DialogLayer'
 @View(DialogLayer)
@@ -21,8 +21,11 @@ export default class DialogTest extends ui.view.DialogTestUI implements IView {
       }
       this.moveY = !this.moveY
     })
+    this.closeBtn.on(Laya.Event.CLICK, this, () => {
+      closeView(ViewConst.DialogTest)
+    })
   }
-  public openCb() {
-    console.log('DialogTest open')
+  public openCb(...args) {
+    console.log('DialogTest open', args)
   }
 }

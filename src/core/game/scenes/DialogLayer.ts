@@ -2,9 +2,12 @@ import GameApp from '../GameApp'
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
 import { LayerConst } from './LayerConst'
-class Mask extends Laya.View {
+import { closeView } from '../../../decorators/LayerViewMgr'
+class Mask extends Laya.Image {
   public constructor() {
     super()
+    this.skin = 'comp/blank.png'
+    this.alpha = 0.8
   }
 }
 export class DialogLayer extends BaseLayer implements ILayer {
@@ -15,24 +18,20 @@ export class DialogLayer extends BaseLayer implements ILayer {
   static layerKey = LayerConst.dialog
   private openViews = []
 
-  private masks: Map<string, Laya.View> = new Map()
+  private masks: Map<string, Laya.Image> = new Map()
 
-  public openView(view: Laya.View, ...args: any[]): void {
-    let mask = this.masks.get(view.name)
+  public openView(view: any, ...args: any[]): void {
+    let mask = this.masks.get(view.constructor.viewKey)
     if (!mask) {
       mask = new Mask()
-      mask.on(
-        Laya.Event.CLICK,
-        this,
-        (): void => {
-          GameApp.viewMgr.closeView(view)
-        },
-      )
-      this.masks.set(view.name, mask)
+      mask.on(Laya.Event.CLICK, this, () => {
+        closeView(view)
+      })
+      this.masks.set(view.constructor.viewKey, mask)
     }
-    mask.width = Laya.stage.width
-    mask.height = Laya.stage.height
-    this.masks.set(view.name, mask)
+    mask.width = this.width
+    mask.height = this.height
+    this.masks.set(view.viewKey, mask)
     this.addChild(mask)
     // GameApp.dispatcher.Observe(
     //   Message.CLOSE_DIALOG,
@@ -55,17 +54,14 @@ export class DialogLayer extends BaseLayer implements ILayer {
       { scaleX: 1.05, scaleY: 1.05 },
       100,
       null,
-      new Laya.Handler(
-        this,
-        (): void => {
-          let tween = new Laya.Tween()
-          tween.to(view, { scaleX: 1, scaleY: 1 }, 100, null)
-        },
-      ),
+      new Laya.Handler(this, () => {
+        let tween = new Laya.Tween()
+        tween.to(view, { scaleX: 1, scaleY: 1 }, 100, null)
+      }),
     )
   }
   public closeView(view: any): void {
-    this.removeChild(this.masks.get(view.name))
+    this.removeChild(this.masks.get(view.constructor.viewKey))
     super.closeView(view)
   }
 }

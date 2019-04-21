@@ -1,6 +1,6 @@
 import { ui } from '../ui/layaMaxUI'
 import { IView } from '../core/game/scenes/interface/IView'
-import { View } from '../decorators/LayerViewMgr'
+import { View, closeView } from '../decorators/LayerViewMgr'
 import { ViewConst } from '../core/game/scenes/ViewConst'
 import { BaseLayer } from '../core/game/scenes/BaseLayer'
 @View(BaseLayer)
@@ -21,8 +21,11 @@ export default class Loading extends ui.view.LoadingUI implements IView {
       }
       this.moveY = !this.moveY
     })
+    this.btn_close.on(Laya.Event.CLICK, this, () => {
+      closeView(this)
+    })
   }
-  public openCb() {
-    console.log('Loading open')
+  public openCb(...args) {
+    console.log('Loading open', args)
   }
 }
