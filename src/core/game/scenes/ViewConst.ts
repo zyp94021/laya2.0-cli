@@ -1,3 +1,7 @@
 export enum ViewConst {
-  MAIN = 1,
+  Main = 1,
+  Loading,
+  ViewTest,
+  DialogTest,
+  BaseTest,
 }

@@ -14,6 +14,31 @@ export module ui.scene {
     REG("ui.scene.MainSceneUI",MainSceneUI);
 }
 export module ui.view {
+    export class BaseTestUI extends Laya.View {
+		public tank:Laya.Clip;
+		public closeBtn:Laya.Button;
+		public dialogBtn:Laya.Button;
+		public baseBtn:Laya.Button;
+		public viewBtn:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":252,"x":472,"var":"dialogBtn","skin":"comp/button.png","label":"dialog"},"compId":5},{"type":"Button","props":{"y":304,"x":472,"var":"baseBtn","skin":"comp/button.png","label":"base"},"compId":6},{"type":"Button","props":{"y":362,"x":472,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":7}],"loadList":["Characters/Tank_8.png","comp/button.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(BaseTestUI.uiView);
+        }
+    }
+    REG("ui.view.BaseTestUI",BaseTestUI);
+    export class DialogTestUI extends Laya.View {
+		public tank:Laya.Clip;
+		public closeBtn:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(DialogTestUI.uiView);
+        }
+    }
+    REG("ui.view.DialogTestUI",DialogTestUI);
     export class LoadingUI extends Laya.View {
 		public tank:Laya.Clip;
 		public btn_close:Laya.Button;
@@ -26,4 +51,15 @@ export module ui.view {
         }
     }
     REG("ui.view.LoadingUI",LoadingUI);
+    export class ViewTestUI extends Laya.View {
+		public tank:Laya.Clip;
+		public closeBtn:Laya.Button;
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["Characters/$狼.png","comp/button.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(ViewTestUI.uiView);
+        }
+    }
+    REG("ui.view.ViewTestUI",ViewTestUI);
 }

@@ -1,17 +1,20 @@
 import { IView } from './interface/IView'
-
-export class BaseLayer extends Laya.View {
-  public init(): void {
-    this.width = Laya.stage.width
-    this.height = Laya.stage.height
+import { LayerConst } from './LayerConst'
+import { ILayer } from './interface/ILayer'
+export class BaseLayer extends Laya.View implements ILayer {
+  constructor(scene: Laya.Scene) {
+    super()
+    this.width = scene.width
+    this.height = scene.height
     this.hitTestPrior = true
     this.mouseThrough = true
     this.mouseEnabled = true
-    Laya.stage.addChild(this)
+    scene.addChild(this)
   }
+  static layerKey = LayerConst.base
   public openView(view: IView, ...args): void {
-    if (view.open) {
-      view.open.apply(view, args)
+    if (view.openCb) {
+      view.openCb.apply(view, args)
     }
     view.width = this.width
     view.height = this.height
@@ -19,8 +22,8 @@ export class BaseLayer extends Laya.View {
     this.addChild(view)
   }
   public closeView(view: IView): void {
-    if (view.close) {
-      view.close()
+    if (view.closeCb) {
+      view.closeCb()
     }
     this.removeChild(view)
     this.mouseThrough = this._children.length === 0

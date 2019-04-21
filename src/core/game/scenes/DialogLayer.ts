@@ -1,6 +1,7 @@
 import GameApp from '../GameApp'
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
+import { LayerConst } from './LayerConst'
 class Mask extends Laya.View {
   public constructor() {
     super()
@@ -8,10 +9,10 @@ class Mask extends Laya.View {
 }
 export class DialogLayer extends BaseLayer implements ILayer {
   // private mMask
-  public init(): void {
-    super.init()
+  constructor(scene: Laya.Scene) {
+    super(scene)
   }
-
+  static layerKey = LayerConst.dialog
   private openViews = []
 
   private masks: Map<string, Laya.View> = new Map()
@@ -33,13 +34,13 @@ export class DialogLayer extends BaseLayer implements ILayer {
     mask.height = Laya.stage.height
     this.masks.set(view.name, mask)
     this.addChild(mask)
-    GameApp.dispatcher.Observe(
-      Message.CLOSE_DIALOG,
-      this,
-      (): void => {
-        GameApp.viewMgr.closeView(view)
-      },
-    )
+    // GameApp.dispatcher.Observe(
+    //   Message.CLOSE_DIALOG,
+    //   this,
+    //   (): void => {
+    //     GameApp.viewMgr.closeView(view)
+    //   },
+    // )
     super.openView.apply(this, [view, ...args])
     view.anchorX = 0.5
     view.anchorY = 0.5
