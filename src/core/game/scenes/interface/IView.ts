@@ -1,9 +1,9 @@
 import { ILayer } from './ILayer'
 
 export interface IView extends Laya.View {
-  open(...args: any[]): void
+  openCb?(...args: any[]): void
 
-  close(): void
+  closeCb?(): void
 
-  layer: ILayer
+  layer?: ILayer
 }

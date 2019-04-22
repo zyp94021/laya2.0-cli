@@ -3,6 +3,6 @@ import GameApp from '../core/game/GameApp'
 export default class MainScene extends ui.scene.MainSceneUI {
     public constructor() {
         super()
-        GameApp.init()
+        GameApp.init(this)
     }
 }

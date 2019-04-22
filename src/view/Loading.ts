@@ -1,13 +1,14 @@
 import { ui } from '../ui/layaMaxUI'
 import { IView } from '../core/game/scenes/interface/IView'
-import { ILayer } from '../core/game/scenes/interface/ILayer'
-import * as moment from 'moment'
+import { View, closeView } from '../decorators/LayerViewMgr'
+import { ViewConst } from '../core/game/scenes/ViewConst'
+import { BaseLayer } from '../core/game/scenes/BaseLayer'
+@View(BaseLayer)
 export default class Loading extends ui.view.LoadingUI implements IView {
-  public layer: ILayer
+  static viewKey = ViewConst.Loading
   public moveY = false
-  constructor(layer: ILayer) {
+  constructor() {
     super()
-    this.layer = layer
 
     this.timerLoop(500, this, () => {
       this.tank.index = this.tank.index === 7 ? 4 : this.tank.index + 1
@@ -20,14 +21,11 @@ export default class Loading extends ui.view.LoadingUI implements IView {
       }
       this.moveY = !this.moveY
     })
-  }
-  public open() {
-    console.log(moment(new Date()).format('YYYY-M-D H:m:s'))
-
-    const data = { a: 1, b: 2, c: 3 }
-    Object.entries(data).map(item => {
-      console.log(item)
+    this.btn_close.on(Laya.Event.CLICK, this, () => {
+      closeView(this)
     })
- 
+  }
+  public openCb(...args) {
+    console.log('Loading open', args)
   }
 }

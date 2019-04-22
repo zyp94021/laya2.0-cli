@@ -6,10 +6,10 @@ import MainScene from "./scene/MainScene"
 export default class GameConfig{
     static width:number=640;
     static height:number=1136;
-    static scaleMode:string="fixedwidth";
+    static scaleMode:string="showall";
     static screenMode:string="none";
-    static alignV:string="top";
-    static alignH:string="left";
+    static alignV:string="middle";
+    static alignH:string="center";
     static startScene:any="scene/MainScene.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
