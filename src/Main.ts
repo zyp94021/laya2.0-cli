@@ -1,4 +1,12 @@
 import GameConfig from './GameConfig'
+import { createViews, openView } from './decorators/LayerViewMgr'
+import BaseTest from './view/BaseTest'
+import ViewTest from './view/ViewTest'
+import ViewTest1 from './view/ViewTest1'
+import { BaseLayer } from './core/game/scenes/BaseLayer'
+import { DialogLayer } from './core/game/scenes/DialogLayer'
+import DialogTest from './view/DialogTest'
+import Loading from './view/Loading'
 class Main {
   public constructor() {
     //根据IDE设置初始化引擎
@@ -7,7 +15,7 @@ class Main {
     Laya['Physics'] && Laya['Physics'].enable()
     Laya['DebugPanel'] && Laya['DebugPanel'].enable()
     // Laya.stage.scaleMode = GameConfig.scaleMode;
-    Laya.stage.scaleMode = 'fixedheight'
+    Laya.stage.scaleMode = GameConfig.scaleMode
     Laya.stage.screenMode = GameConfig.screenMode
     //兼容微信不支持加载scene后缀场景
     Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson
@@ -29,7 +37,41 @@ class Main {
 
   private onConfigLoaded(): void {
     //加载IDE指定的场景
-    GameConfig.startScene && Laya.Scene.open(GameConfig.startScene)
+    // GameConfig.startScene && Laya.Scene.open(GameConfig.startScene)
+    const UI = new Laya.View()
+    UI.name = 'UI'
+    UI.width = Laya.stage.width
+    UI.height = Laya.stage.height
+    Laya.stage.addChild(UI)
+    createViews(UI)
+    // openView(BaseTest)
+    setTimeout(() => {
+      openView(BaseTest)
+    }, 1000)
+    setTimeout(() => {
+      openView(DialogTest)
+    }, 1000)
+    setTimeout(() => {
+      openView(Loading)
+    }, 2000)
+    // openView(ViewTest)
+    // openView(ViewTest1)
+
+    // const baseLayer = new DialogLayer(UI)
+    // UI.addChild(baseLayer)
+    // const baseTest = new BaseTest()
+    // baseTest.width = baseLayer.width
+    // baseTest.height = baseLayer.height
+    // const dialogTest = new DialogTest()
+    // dialogTest.width = baseLayer.width
+    // dialogTest.height = baseLayer.height
+    // ;(dialogTest as any).layer = baseLayer
+    // setTimeout(() => {
+    //   baseLayer.openView(baseTest)
+    // }, 3000)
+    // setTimeout(() => {
+    //   baseLayer.openView(dialogTest)
+    // }, 6000)
   }
 }
 //激活启动类

@@ -5,26 +5,20 @@ export class BaseLayer extends Laya.View implements ILayer {
   protected ownScene: Laya.Scene
   constructor(scene: Laya.Scene) {
     super()
-    this.width = scene.width
-    this.height = scene.height
+    this.ownScene = scene
+    this.width = this.ownScene.width
+    this.height = this.ownScene.height
     this.hitTestPrior = true
     this.mouseThrough = true
     this.mouseEnabled = true
-    this.ownScene = scene
-    console.log(this)
-    this.ownScene.addChild(this)
   }
-  
+
   static layerKey = LayerConst.base
   public openView(view: IView, ...args): void {
     if (view.openCb) {
       view.openCb.apply(view, args)
     }
-    view.width = this.width
-    view.height = this.height
     this.mouseThrough = false
-    console.log(this)
-    console.log(view)
     this.addChild(view)
   }
   public closeView(view: IView): void {

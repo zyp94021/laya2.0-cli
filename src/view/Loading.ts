@@ -2,7 +2,7 @@ import { ui } from '../ui/layaMaxUI'
 import { IView } from '../core/game/scenes/interface/IView'
 import { View, closeView } from '../decorators/LayerViewMgr'
 import { ViewConst } from '../core/game/scenes/ViewConst'
-import { BaseLayer } from '../core/game/scenes/BaseLayer'
+import { BaseLayer } from '../core/game/scenes/BaseLayer';
 @View(BaseLayer)
 export default class Loading extends ui.view.LoadingUI implements IView {
   static viewKey = ViewConst.Loading

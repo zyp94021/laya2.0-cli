@@ -22,8 +22,7 @@ export default class GameApp {
       Service.Init()
       // this.controller
       console.log(scene)
-      createViews(scene)
-      openView(BaseTest)
+     
       // GameApp.viewMgr.openView(ViewConst.MAIN)
     })
   }

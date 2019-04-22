@@ -9,6 +9,7 @@ export default class DialogTest extends ui.view.DialogTestUI implements IView {
   public moveY = false
   constructor() {
     super()
+    this.active
     this.timerLoop(500, this, () => {
       this.tank.index = this.tank.index === 7 ? 4 : this.tank.index + 1
     })
@@ -19,6 +20,10 @@ export default class DialogTest extends ui.view.DialogTestUI implements IView {
         this.tank.centerY -= 1
       }
       this.moveY = !this.moveY
+      this.box.width = 400
+      this.box.height = 400
+      this.box.centerX = 0
+      this.box.centerY = 0
     })
     this.closeBtn.on(Laya.Event.CLICK, this, () => {
       closeView(ViewConst.DialogTest)

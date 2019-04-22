@@ -12,7 +12,7 @@ export class ViewLayer extends BaseLayer {
   }
   static layerKey = LayerConst.view
   private openViews: IView[] = []
-
+ 
   public openView(view: any, ...args) {
     let lastView: Laya.Sprite
     const tween1 = new Laya.Tween()

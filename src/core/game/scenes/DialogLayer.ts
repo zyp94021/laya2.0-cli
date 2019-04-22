@@ -14,13 +14,11 @@ export class DialogLayer extends BaseLayer implements ILayer {
   // private mMask
   constructor(scene: Laya.Scene) {
     super(scene)
-    console.log('....',this)
   }
   static layerKey = LayerConst.dialog
-  private openViews = []
 
   private masks: Map<string, Laya.Image> = new Map()
-
+  
   public openView(view: any, ...args: any[]): void {
     let mask = this.masks.get(view.constructor.viewKey)
     if (!mask) {
@@ -28,11 +26,11 @@ export class DialogLayer extends BaseLayer implements ILayer {
       mask.on(Laya.Event.CLICK, this, () => {
         closeView(view)
       })
-      this.masks.set(view.constructor.viewKey, mask)
     }
     mask.width = this.width
     mask.height = this.height
-    this.masks.set(view.viewKey, mask)
+    
+    this.masks.set(view.constructor.viewKey, mask)
     this.addChild(mask)
     super.openView.apply(this, [view, ...args])
     view.anchorX = 0.5
