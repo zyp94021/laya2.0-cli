@@ -20,7 +20,7 @@ export module ui.view {
 		public dialogBtn:Laya.Button;
 		public loadingBtn:Laya.Button;
 		public viewBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":252,"x":472,"var":"dialogBtn","skin":"comp/button.png","label":"dialog"},"compId":5},{"type":"Button","props":{"y":304,"x":472,"var":"loadingBtn","skin":"comp/button.png","label":"base"},"compId":6},{"type":"Button","props":{"y":362,"x":472,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":7}],"loadList":["Characters/Tank_8.png","comp/button.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":252,"x":472,"var":"dialogBtn","skin":"comp/button.png","label":"dialog"},"compId":5},{"type":"Button","props":{"y":304,"x":472,"var":"loadingBtn","skin":"comp/button.png","label":"base"},"compId":6},{"type":"Button","props":{"y":362,"x":472,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":7}],"loadList":["comp/image.png","Characters/Tank_8.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -31,7 +31,7 @@ export module ui.view {
     export class DialogTestUI extends Laya.View {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_2.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["Characters/Tank_2.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -55,7 +55,7 @@ export module ui.view {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
 		public viewBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":385,"x":282.5,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":5}],"loadList":["Characters/$狼.png","comp/button.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":7},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":385,"x":282.5,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":5}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -66,7 +66,7 @@ export module ui.view {
     export class ViewTest1UI extends Laya.View {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["Characters/$狼.png","comp/button.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":6},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

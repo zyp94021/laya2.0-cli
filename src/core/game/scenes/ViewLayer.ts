@@ -13,39 +13,61 @@ export class ViewLayer extends BaseLayer {
   static layerKey = LayerConst.view
   private openViews: IView[] = []
 
-  public openView(view: any, ...args): void {
-    let lastView
-    let tween1 = new Laya.Tween()
-    if (this.openViews.length > 0) {
+  public openView(view: any, ...args) {
+    let lastView: Laya.Sprite
+    const tween1 = new Laya.Tween()
+    if (this.openViews.length) {
       lastView = this.openViews[this.openViews.length - 1]
     } else {
-      lastView = this.scene
+      lastView = this.ownScene
     }
-    lastView.x = 0
-    tween1.to(lastView, { x: -dis }, time, null, null)
+    lastView.x = this.ownScene === lastView ? 0 : dis
+    tween1.to(
+      lastView,
+      { x: this.ownScene === lastView ? -dis : 0 },
+      time,
+      null,
+      new Laya.Handler(lastView, () => {
+        if (lastView !== this.ownScene) lastView.removeSelf()
+      }),
+    )
     this.openViews.push(view)
     super.openView.apply(this, [view, ...args])
-    let tween2 = new Laya.Tween()
-    view.x = this.scene.width
-    tween2.to(view, { x: 0 }, time, null, null)
-  }
-
-  public closeView(view: any): void {
-    this.openViews.pop()
-    let lastView
-    let tween1 = new Laya.Tween()
-    if (this.openViews.length > 0) {
-      lastView = this.openViews.pop()
-    } else {
-      lastView = this.scene
-    }
-    lastView.x = -dis
-    tween1.to(lastView, { x: 0 }, time, null, null)
-    let tween2 = new Laya.Tween()
-    view.x = 0
+    const tween2 = new Laya.Tween()
+    view.x = this.width
     tween2.to(
       view,
-      { x: this.scene.width },
+      { x: dis },
+      time,
+      null,
+      new Laya.Handler(view, () => {
+        if (view.afterOpen) {
+          view.afterOpen.call(view)
+        }
+      }),
+    )
+  }
+
+  public closeView(view: any) {
+    let lastView
+    const tween1 = new Laya.Tween()
+    this.openViews.pop()
+    if (this.openViews.length > 0) {
+      lastView = this.openViews[this.openViews.length - 1]
+      lastView.zOrder = view.zOrder - 1
+      lastView.layer.addChild(lastView)
+    } else {
+      lastView = this.ownScene
+    }
+
+    lastView.x = lastView === this.ownScene ? -dis : 0
+
+    tween1.to(lastView, { x: lastView === this.ownScene ? 0 : dis }, time)
+    const tween2 = new Laya.Tween()
+    view.x = dis
+    tween2.to(
+      view,
+      { x: this.width },
       time,
       null,
       new Laya.Handler(this, () => {

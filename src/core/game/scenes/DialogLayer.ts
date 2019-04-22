@@ -14,6 +14,7 @@ export class DialogLayer extends BaseLayer implements ILayer {
   // private mMask
   constructor(scene: Laya.Scene) {
     super(scene)
+    console.log('....',this)
   }
   static layerKey = LayerConst.dialog
   private openViews = []
@@ -33,13 +34,6 @@ export class DialogLayer extends BaseLayer implements ILayer {
     mask.height = this.height
     this.masks.set(view.viewKey, mask)
     this.addChild(mask)
-    // GameApp.dispatcher.Observe(
-    //   Message.CLOSE_DIALOG,
-    //   this,
-    //   (): void => {
-    //     GameApp.viewMgr.closeView(view)
-    //   },
-    // )
     super.openView.apply(this, [view, ...args])
     view.anchorX = 0.5
     view.anchorY = 0.5

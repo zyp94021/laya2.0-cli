@@ -9,7 +9,6 @@ export default class DialogTest extends ui.view.DialogTestUI implements IView {
   public moveY = false
   constructor() {
     super()
-
     this.timerLoop(500, this, () => {
       this.tank.index = this.tank.index === 7 ? 4 : this.tank.index + 1
     })

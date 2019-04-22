@@ -2,7 +2,7 @@ import { IView } from './interface/IView'
 import { LayerConst } from './LayerConst'
 import { ILayer } from './interface/ILayer'
 export class BaseLayer extends Laya.View implements ILayer {
-  scene: Laya.Scene
+  protected ownScene: Laya.Scene
   constructor(scene: Laya.Scene) {
     super()
     this.width = scene.width
@@ -10,8 +10,11 @@ export class BaseLayer extends Laya.View implements ILayer {
     this.hitTestPrior = true
     this.mouseThrough = true
     this.mouseEnabled = true
-    scene.addChild(this)
+    this.ownScene = scene
+    console.log(this)
+    this.ownScene.addChild(this)
   }
+  
   static layerKey = LayerConst.base
   public openView(view: IView, ...args): void {
     if (view.openCb) {
@@ -20,6 +23,8 @@ export class BaseLayer extends Laya.View implements ILayer {
     view.width = this.width
     view.height = this.height
     this.mouseThrough = false
+    console.log(this)
+    console.log(view)
     this.addChild(view)
   }
   public closeView(view: IView): void {
