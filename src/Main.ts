@@ -44,16 +44,17 @@ class Main {
     UI.height = Laya.stage.height
     Laya.stage.addChild(UI)
     createViews(UI)
-    // openView(BaseTest)
-    setTimeout(() => {
-      openView(BaseTest)
-    }, 1000)
+    openView(BaseTest) 
+    // setTimeout(() => {
+    //   openView(BaseTest)
+    // }, 1000)
     setTimeout(() => {
       openView(DialogTest)
-    }, 1000)
+      // Laya.Scene.open('view/DialogTest.scene')
+    }, 5000)
     setTimeout(() => {
       openView(Loading)
-    }, 2000)
+    }, 10000)
     // openView(ViewTest)
     // openView(ViewTest1)
 

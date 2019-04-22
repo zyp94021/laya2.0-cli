@@ -46,6 +46,7 @@ export const openView = (View, ...args) => {
   _view.width = _layer.width
   _view.height = _layer.height
   _view.layer = _layer
+  _view.event(Laya.Event.RESIZE)
   _view.layer.openView(_view, ...args)
   views[view.View.viewKey] = _view
 }

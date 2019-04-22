@@ -20,16 +20,15 @@ export default class DialogTest extends ui.view.DialogTestUI implements IView {
         this.tank.centerY -= 1
       }
       this.moveY = !this.moveY
-      this.box.width = 400
-      this.box.height = 400
-      this.box.centerX = 0
-      this.box.centerY = 0
     })
     this.closeBtn.on(Laya.Event.CLICK, this, () => {
       closeView(ViewConst.DialogTest)
+      // console.log(this)
+      // Laya.Scene.close('view/DialogTest.scene')
     })
   }
   public openCb(...args) {
     console.log('DialogTest open', args)
+    // console.log(this.img['onCompResize']())
   }
 }
