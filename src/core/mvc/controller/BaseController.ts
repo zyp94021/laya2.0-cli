@@ -1,35 +1,67 @@
 import BaseModel from '../model/BaseModel'
+import * as v from "../view/BaseView";
+import BaseView =v.KUI.BaseView
+import GameApp from '../../game/GameApp';
 
 export default class BaseController {
-    private model: BaseModel
-    private messages: any
-    constructor() {
-        this.messages = {}
-        this.model = null
-    }
-    //监听事件
-    public addListener(key, callback, caller) {
-        if (this.messages[key]) return
-        this.messages[key] = [callback, caller]
-    }
-    //移除监听的事件
-    public removeListener(key) {
-        if (this.messages && this.messages[key]) {
-            delete this.messages[key]
-        }
-    }
-    //触发事件
-    public dispatch(key, ...args) {
-        const listen = this.messages[key]
-        if (listen) {
-            return listen[0].apply(listen[1], args)
-        } else {
-            console.log(`消息：${key}不存在监听`)
-            return null
-        }
-    }
-    //向其他模块通讯
-    public sendMessage() { }
-    public getModel() { }
-    public setModel() { }
+  private model: BaseModel
+  private view: BaseView
+  constructor() {
+    this.model = null
+    this.view = null
+    this.init()
+  }
+  public init()
+  {
+    
+  }
+  public setModel(model) {
+    this.model = model
+  }
+  public getModel() {
+    return this.model
+  }
+  public setView(view) {
+    this.view = view
+  }
+  public getView() {
+    return this.view
+  }
+
+  //监听事件
+  public addListener(key, callback, caller) {
+    GameApp.dispatcher.Observe(key,caller,callback)
+  }
+  //移除监听的事件
+  public removeListener(key) {
+    GameApp.dispatcher.Remove(key)
+  }
+  //触发事件
+  public dispatch(key, ...args) {
+    GameApp.dispatcher.SendMsg(key,args)
+  }
+  /**
+   * 注册从服务器返回消息的监听
+   * @param  cmd 消息标识
+   * @param callback 处理函数
+   * @param  thisObj 处理函数所属对象
+   */
+  observerSocketMsg(cmd, callback, thisObj) {}
+
+  /**
+   * @param cmd 消息标识
+   * @param msg 数据
+   * @param callback 处理函数
+   * @param thisObj 处理函数所属对象
+   */
+  sendSocketMsg(cmd, msg, callback, thisObj) {}
+
+  /**
+   * 发送消息到Http服务端
+   * @param  cmd 消息标识 例如: User.login
+   * @param  msg 消息参数 例如: let msg:any = {"uName":uName, "uPass":uPass};
+   */
+  sendHttpMsg(cmd, msg) {}
+  //向其他模块通讯
+  public sendMessage() {}
 }

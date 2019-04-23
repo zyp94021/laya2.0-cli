@@ -24,12 +24,16 @@ export const View = Layer => {
 export const createViews = stage => {
   scene = stage
 }
-export const openView = (View, ...args) => {
+
+export const registerView = (View, controller) => {
   let _view = views[View.viewKey]
   if (_view) {
-    _view.layer.openView(_view, ...args)
+    console.log('重复注册view：' + View.viewKey)
     return
   }
+  return createView(View, controller)
+}
+export const createView = (View, controller) => {
   const layer = layerView.find(layer => layer.views.find(view => view.View.viewKey === View.viewKey))
   if (!layer) {
     throw new Error('layer 不存在')
@@ -42,12 +46,19 @@ export const openView = (View, ...args) => {
     layers[layer.Layer.layerKey] = _layer
   }
   const view = layer.views.find(view => view.View.viewKey === View.viewKey)
-  _view = new view.View()
-  _view.width = _layer.width
-  _view.height = _layer.height
+  let _view = new view.View()
   _view.layer = _layer
-  _view.layer.openView(_view, ...args)
   views[view.View.viewKey] = _view
+  _view.setController(controller)
+  if (_view.init) _view.init()
+  return _view
+}
+export const openView = (View, ...args) => {
+  let _view = views[View.viewKey]
+  if (_view) {
+    _view.layer.openView(_view, ...args)
+    return
+  }
 }
 export const closeView = (ViewOrKeyOrIns, ...args) => {
   let _view

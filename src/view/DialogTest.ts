@@ -3,6 +3,7 @@ import { IView } from '../core/game/scenes/interface/IView'
 import { View, closeView } from '../decorators/LayerViewMgr'
 import { ViewConst } from '../core/game/scenes/ViewConst'
 import { DialogLayer } from '../core/game/scenes/DialogLayer'
+import { BaseLayer } from '../core/game/scenes/BaseLayer';
 @View(DialogLayer)
 export default class DialogTest extends ui.view.DialogTestUI implements IView {
   static viewKey = ViewConst.DialogTest

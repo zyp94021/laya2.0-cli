@@ -5,4 +5,6 @@ export enum ViewConst {
   ViewTest1,
   DialogTest,
   BaseTest,
+  APage,
+  BPage
 }

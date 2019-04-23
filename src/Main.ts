@@ -17,6 +17,8 @@ class Main {
     // Laya.stage.scaleMode = GameConfig.scaleMode;
     Laya.stage.scaleMode = GameConfig.scaleMode
     Laya.stage.screenMode = GameConfig.screenMode
+    Laya.stage.alignV=GameConfig.alignV
+    Laya.stage.alignH=GameConfig.alignH
     //兼容微信不支持加载scene后缀场景
     Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson
 

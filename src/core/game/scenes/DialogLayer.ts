@@ -1,4 +1,3 @@
-import GameApp from '../GameApp'
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
 import { LayerConst } from './LayerConst'

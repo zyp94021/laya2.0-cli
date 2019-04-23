@@ -5,8 +5,8 @@ import { ViewMgr } from './scenes/ViewMgr'
 import Socket from '../../net/socket'
 import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
-import { createViews, openView } from '../../decorators/LayerViewMgr'
-import BaseTest from '../../view/BaseTest'
+import { createViews } from '../../decorators/LayerViewMgr'
+import ControllerManager from '../mvc/ControllerManager'
 export default class GameApp {
   // 全局配置数据
   public static GlobalData: any = null
@@ -20,12 +20,11 @@ export default class GameApp {
       GameApp.GlobalData = Laya.loader.getRes('conf/global.json')
       //帧轮询
       Service.Init()
-      // this.controller
-      console.log(scene)
-     
-      // GameApp.viewMgr.openView(ViewConst.MAIN)
+      createViews(scene)
+      resolve()
     })
   }
+  
 
   public static get controller(): MainController {
     return MainController.CreateOrGet()
@@ -46,5 +45,8 @@ export default class GameApp {
   }
   public static get Socket(): Socket {
     return Socket.CreateOrGet()
+  }
+  public static get controllerMgr(): ControllerManager {
+    return ControllerManager.CreateOrGet()
   }
 }
