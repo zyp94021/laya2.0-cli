@@ -12,10 +12,10 @@ export default class GameConfig{
     static alignH:string="center";
     static startScene:any="scene/MainScene.scene";
     static sceneRoot:string="";
-    static debug:boolean=false;
+    static debug:boolean=true;
     static stat:boolean=false;
     static physicsDebug:boolean=false;
-    static exportSceneToJson:boolean=true;
+    static exportSceneToJson:boolean=false;
     constructor(){}
     static init(){
         var reg: Function = Laya.ClassUtils.regClass;

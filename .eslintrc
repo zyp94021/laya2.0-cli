@@ -31,7 +31,8 @@
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-object-literal-type-assertion": "off",
     "@typescript-eslint/no-parameter-properties": "off",
-    "@typescript-eslint/camelcase": "warn"
+    "@typescript-eslint/camelcase": "warn",
+    "@typescript-eslint/no-namespace":"off"
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],

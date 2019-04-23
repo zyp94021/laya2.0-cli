@@ -1,4 +1,3 @@
-import GameApp from '../GameApp'
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
 import { LayerConst } from './LayerConst'
@@ -14,7 +13,6 @@ export class DialogLayer extends BaseLayer implements ILayer {
   // private mMask
   constructor(scene: Laya.Scene) {
     super(scene)
-    console.log('....',this)
   }
   static layerKey = LayerConst.dialog
   private openViews = []

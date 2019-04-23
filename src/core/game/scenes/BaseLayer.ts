@@ -11,7 +11,6 @@ export class BaseLayer extends Laya.View implements ILayer {
     this.mouseThrough = true
     this.mouseEnabled = true
     this.ownScene = scene
-    console.log(this)
     this.ownScene.addChild(this)
   }
   
@@ -23,8 +22,6 @@ export class BaseLayer extends Laya.View implements ILayer {
     view.width = this.width
     view.height = this.height
     this.mouseThrough = false
-    console.log(this)
-    console.log(view)
     this.addChild(view)
   }
   public closeView(view: IView): void {

@@ -2,9 +2,11 @@
 import View=Laya.View;
 import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
+import * as v from "../core/mvc/view/BaseView";
+import BaseView =v.KUI.BaseView
 var REG: Function = Laya.ClassUtils.regClass;
 export module ui.scene {
-    export class MainSceneUI extends Laya.Scene {
+    export class MainSceneUI extends Scene {
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -14,7 +16,18 @@ export module ui.scene {
     REG("ui.scene.MainSceneUI",MainSceneUI);
 }
 export module ui.view {
-    export class BaseTestUI extends Laya.View {
+    export class APageUI extends BaseView {
+		public btn:Laya.Button;
+		public contents:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"Label","props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14}],"loadList":["comp/button.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(APageUI.uiView);
+        }
+    }
+    REG("ui.view.APageUI",APageUI);
+    export class BaseTestUI extends View {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
 		public dialogBtn:Laya.Button;
@@ -28,7 +41,18 @@ export module ui.view {
         }
     }
     REG("ui.view.BaseTestUI",BaseTestUI);
-    export class DialogTestUI extends Laya.View {
+    export class BPageUI extends BaseView {
+		public change:Laya.Button;
+		public close_btn:Laya.Button;
+        public static  uiView:any ={"type":"BaseView","props":{"width":300,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":300,"lineWidth":1,"height":1136,"fillColor":"#cdf9a4"},"compId":3},{"type":"Button","props":{"y":534,"x":59,"width":200,"var":"change","skin":"comp/button.png","label":"ChangeAPage","height":50},"compId":4},{"type":"Button","props":{"y":644,"x":59,"width":200,"var":"close_btn","skin":"comp/button.png","label":"Close","height":50},"compId":5}],"loadList":["comp/button.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(BPageUI.uiView);
+        }
+    }
+    REG("ui.view.BPageUI",BPageUI);
+    export class DialogTestUI extends View {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
         public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_2.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["Characters/Tank_2.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
@@ -39,7 +63,7 @@ export module ui.view {
         }
     }
     REG("ui.view.DialogTestUI",DialogTestUI);
-    export class LoadingUI extends Laya.View {
+    export class LoadingUI extends View {
 		public tank:Laya.Clip;
 		public btn_close:Laya.Button;
 		public btn_connect:Laya.Button;
@@ -51,7 +75,7 @@ export module ui.view {
         }
     }
     REG("ui.view.LoadingUI",LoadingUI);
-    export class ViewTestUI extends Laya.View {
+    export class ViewTestUI extends View {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
 		public viewBtn:Laya.Button;
@@ -63,7 +87,7 @@ export module ui.view {
         }
     }
     REG("ui.view.ViewTestUI",ViewTestUI);
-    export class ViewTest1UI extends Laya.View {
+    export class ViewTest1UI extends View {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
         public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":6},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
