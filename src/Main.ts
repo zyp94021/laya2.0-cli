@@ -37,42 +37,9 @@ class Main {
 
   private onConfigLoaded(): void {
     //加载IDE指定的场景
-    // GameConfig.startScene && Laya.Scene.open(GameConfig.startScene)
-    const UI = new Laya.View()
-    UI.name = 'UI'
-    UI.width = Laya.stage.width
-    UI.height = Laya.stage.height
-    Laya.stage.addChild(UI)
-    createViews(UI)
-    openView(BaseTest) 
-    // setTimeout(() => {
-    //   openView(BaseTest)
-    // }, 1000)
-    setTimeout(() => {
-      openView(DialogTest)
-      // Laya.Scene.open('view/DialogTest.scene')
-    }, 5000)
-    setTimeout(() => {
-      openView(Loading)
-    }, 10000)
-    // openView(ViewTest)
-    // openView(ViewTest1)
-
-    // const baseLayer = new DialogLayer(UI)
-    // UI.addChild(baseLayer)
-    // const baseTest = new BaseTest()
-    // baseTest.width = baseLayer.width
-    // baseTest.height = baseLayer.height
-    // const dialogTest = new DialogTest()
-    // dialogTest.width = baseLayer.width
-    // dialogTest.height = baseLayer.height
-    // ;(dialogTest as any).layer = baseLayer
-    // setTimeout(() => {
-    //   baseLayer.openView(baseTest)
-    // }, 3000)
-    // setTimeout(() => {
-    //   baseLayer.openView(dialogTest)
-    // }, 6000)
+    GameConfig.startScene && Laya.Scene.open(GameConfig.startScene)
+    
+    
   }
 }
 //激活启动类

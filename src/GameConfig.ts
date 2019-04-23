@@ -7,12 +7,12 @@ export default class GameConfig{
     static width:number=640;
     static height:number=1136;
     static scaleMode:string="showall";
-    static screenMode:string="horizontal";
+    static screenMode:string="none";
     static alignV:string="middle";
-    static alignH:string="center";
+    static alignH:string="right";
     static startScene:any="scene/MainScene.scene";
     static sceneRoot:string="";
-    static debug:boolean=true;
+    static debug:boolean=false;
     static stat:boolean=false;
     static physicsDebug:boolean=false;
     static exportSceneToJson:boolean=true;

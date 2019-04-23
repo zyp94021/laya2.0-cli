@@ -9,19 +9,14 @@ export default class MainScene extends ui.scene.MainSceneUI {
   public constructor() {
     super()
     // GameApp.init(this)
-    const UI = new Laya.View()
+    const UI = new Laya.Sprite()
     UI.name = 'UI'
     UI.width = Laya.stage.width
     UI.height = Laya.stage.height
     Laya.stage.addChild(UI)
     createViews(UI)
-  }
-  onOpened() {
+
     openView(BaseTest)
-    // setTimeout(() => {
-    // openView(DialogTest)
-    openView(ViewTest)
-    openView(ViewTest1)
-    // }, 2000)
   }
+  onOpened() {}
 }

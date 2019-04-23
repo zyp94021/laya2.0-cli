@@ -1,7 +1,7 @@
 import { IView } from './interface/IView'
 import { LayerConst } from './LayerConst'
 import { ILayer } from './interface/ILayer'
-export class BaseLayer extends Laya.View implements ILayer {
+export class BaseLayer extends Laya.Sprite implements ILayer {
   protected ownScene: Laya.Scene
   constructor(scene: Laya.Scene) {
     super()
