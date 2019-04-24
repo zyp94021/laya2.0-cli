@@ -1,22 +1,24 @@
 import * as v from './ViewMgr'
 import * as c from './ControllerManager'
-const MVC = []
+const MVC = new Map()
 let UI = Laya.stage
 const RegisterMVC = (Layer, Controller = null, Model = null) => {
   return View => {
-    let layer = MVC.find(layer => layer.Layer === Layer)
+    console.log(View.viewKey)
+    let layer = MVC.get(Layer.layerKey)
     if (!layer) {
       layer = {
+        layerKey: Layer.layerKey,
         Layer,
-        views: [],
+        views: new Map(),
       }
-      MVC.push(layer)
+      MVC.set(layer.layerKey, layer)
     }
-    const view = layer.views.find(view => view.View === View || view.View.viewKey === View.viewKey)
+    const view = layer.views.get(View.viewKey)
     if (view) {
-      throw new Error(`View ${view.View} 已存在 || viewKey ${View.viewKey} 重复`)
+      throw new Error(`viewKey ${View.viewKey} 重复`)
     }
-    layer.views.push({ layer, View, Model, Controller })
+    layer.views.set(View.viewKey, { layer, viewKey: View.viewKey, View, Model, Controller })
   }
 }
 const setUIRoot = root => {

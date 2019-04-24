@@ -1,6 +1,5 @@
 const path = require('path')
 const { libs } = require('./conf')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 module.exports = {
   entry: { ...libs, index: './src/Main.ts' },
   devtool: 'inline-source-map',

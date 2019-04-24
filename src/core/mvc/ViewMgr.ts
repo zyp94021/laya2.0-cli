@@ -1,8 +1,9 @@
-import { IView } from '../game/scenes/interface/IView'
+import { IView } from './interface/IView'
 
-import { ILayer } from '../game/scenes/interface/ILayer'
+import { ILayer } from './interface/ILayer'
 
 import { MVC, UI, controllerMgr } from './MvcMgr'
+import { bindEvent } from './UIEvent'
 
 export module mvc {
   class ViewMgr {
@@ -39,25 +40,31 @@ export module mvc {
       _view.layer.openView(_view, ...args)
     }
     private createView(View) {
-      const layer = MVC.find(layer => layer.views.find(view => view.View.viewKey === View.viewKey))
+      let layer
+      MVC.forEach(value => {
+        const _view = value.views.get(View.viewKey)
+        if (_view) {
+          layer = _view.layer
+        }
+      })
       if (!layer) {
         throw new Error('layer 不存在')
       }
-      let _layer = this.getLayer(layer.Layer.layerKey)
+      let _layer = this.getLayer(layer.layerKey)
       if (!_layer) {
         _layer = new layer.Layer(UI)
-        _layer.zOrder = layer.Layer.layerKey
+        _layer.zOrder = layer.layerKey
         UI.addChild(_layer)
-        this.setLayer(layer.Layer.layerKey, _layer)
+        this.setLayer(layer.layerKey, _layer)
       }
-      const view = layer.views.find(view => view.View.viewKey === View.viewKey)
+      const view = layer.views.get(View.viewKey)
       let _view = new view.View()
-      _view.layer = _layer
-      if (view.Controller) {
-        const _controller: any = controllerMgr.register(_view, view.Controller, view.Model)
-        _view.setController(_controller)
-      }
-      this.setView(view.View.viewKey, _view)
+      view.view = _view
+      view.view.layer = _layer
+      bindEvent(view)
+      controllerMgr.register(view)
+
+      this.setView(view.viewKey, _view)
       if (_view.init) _view.init()
       return _view
     }

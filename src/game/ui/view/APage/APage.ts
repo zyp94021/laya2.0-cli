@@ -1,7 +1,7 @@
 import { ui } from '../../../../ui/layaMaxUI'
 import BPage from '../BPage/BPage'
 import { ViewConst } from '../../../../core/const/ViewConst'
-import { BaseLayer } from '../../../../core/game/scenes/BaseLayer'
+import { BaseLayer } from '../../../../core/mvc/layer/BaseLayer'
 import { RegisterMVC, openView } from '../../../../core/mvc/MvcMgr'
 import APageController from './APageController'
 import APageModel from './ApageModel'

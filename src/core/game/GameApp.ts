@@ -1,6 +1,5 @@
 import { Service } from '../service/Service'
 import { Dispatcher } from '../service/dispatcher/Dispatcher'
-import { ViewMgr } from './scenes/ViewMgr'
 import Socket from '../../net/socket'
 import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
@@ -25,10 +24,6 @@ export default class GameApp {
 
   public static get dispatcher(): Dispatcher {
     return Service.dispatcher
-  }
-
-  public static get viewMgr(): ViewMgr {
-    return ViewMgr.CreateOrGet()
   }
 
   public static get StringUtil(): StringUtil {

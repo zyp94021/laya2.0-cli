@@ -2,10 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
+    "selecteID":11,
     "searchKey":"View",
-    "props":{"width":640,"sceneColor":"#000000","height":300},
+    "props":{"width":640,"sceneColor":"#000000","height":1136},
     "nodeParent":-1,
-    "maxID":11,
+    "maxID":12,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -13,20 +14,6 @@
     "hasChild":true,
     "compId":2,
     "child":[
-        {
-            "x":15,
-            "type":"Image",
-            "searchKey":"Image",
-            "props":{"top":0,"skin":"Characters/Tank_2.png","right":0,"left":0,"bottom":0},
-            "nodeParent":2,
-            "label":"Image",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":8,
-            "child":[
-                ]
-        },
         {
             "x":15,
             "type":"Box",
@@ -44,7 +31,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"top":0,"skin":"comp/image.png","sizeGrid":"0,0,0,0","right":0,"left":0,"bottom":0},
+                    "props":{"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},
                     "nodeParent":9,
                     "label":"Image",
                     "isDirectory":false,
