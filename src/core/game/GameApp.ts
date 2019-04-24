@@ -7,6 +7,7 @@ import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
 import { createViews } from '../../decorators/LayerViewMgr'
 import ControllerManager from '../mvc/ControllerManager'
+import GameNet from '../../net/http/GameNet'
 export default class GameApp {
   // 全局配置数据
   public static GlobalData: any = null
@@ -24,7 +25,6 @@ export default class GameApp {
       resolve()
     })
   }
-  
 
   public static get controller(): MainController {
     return MainController.CreateOrGet()
@@ -48,5 +48,8 @@ export default class GameApp {
   }
   public static get controllerMgr(): ControllerManager {
     return ControllerManager.CreateOrGet()
+  }
+  public static get net(): GameNet {
+    return GameNet.CreateOrGet()
   }
 }

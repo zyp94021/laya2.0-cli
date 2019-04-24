@@ -10,6 +10,7 @@ export default class Socket extends Singleton {
     super()
     this.observers = {}
   }
+  private nonce=1
   private ipAddress
   private socket: any
   private observers: any
@@ -85,7 +86,7 @@ export default class Socket extends Singleton {
     }
   }
   public sendMessage(funcName, observer, data, callback = null) {
-    var nonce = 'C2S_' + funcName + (Math.random() * 100000).toFixed(0)
+    var nonce = 'C2S_' + funcName + this.nonce++
     if (!this.observers[nonce]) this.observers[nonce] = []
     this.observers[nonce].push(new Observer(nonce, observer, callback))
     this.send(funcName, data, nonce)
