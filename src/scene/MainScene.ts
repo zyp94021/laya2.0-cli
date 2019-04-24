@@ -20,7 +20,6 @@ export default class MainScene extends ui.scene.MainSceneUI {
     Laya.stage.addChild(UI)
     createViews(UI)
 
-    openView(BaseTest)
     GameApp.controllerMgr.register(ControllerConst.APage, new APageController())
     GameApp.controllerMgr.register(ControllerConst.BPage, new BPageController())
 
