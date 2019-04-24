@@ -1,7 +1,9 @@
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
 import { LayerConst } from './LayerConst'
-import { closeView } from '../../../decorators/LayerViewMgr'
+import { closeView, View } from '../../../decorators/LayerViewMgr'
+import GameApp from '../GameApp';
+import EffectUtils from '../../Utils/EffectUtils';
 class Mask extends Laya.Image {
   public constructor() {
     super()
@@ -51,6 +53,7 @@ export class DialogLayer extends BaseLayer implements ILayer {
         tween.to(view, { scaleX: 1, scaleY: 1 }, 100, null)
       }),
     )
+    
   }
   public closeView(view: any): void {
     this.removeChild(this.masks.get(view.constructor.viewKey))

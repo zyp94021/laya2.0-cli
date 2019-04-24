@@ -1,9 +1,10 @@
 import { ui } from '../ui/layaMaxUI'
-import { openView, View } from '../decorators/LayerViewMgr'
+import { openView, View, readonly } from '../decorators/LayerViewMgr'
 import BPage from './BPage'
 import { ViewConst } from '../core/game/scenes/ViewConst'
 import { BaseLayer } from '../core/game/scenes/BaseLayer'
 import GameApp from '../core/game/GameApp'
+import { DialogLayer } from '../core/game/scenes/DialogLayer'
 @View(BaseLayer)
 export default class APage extends ui.view.APageUI {
   static viewKey = ViewConst.APage
@@ -25,5 +26,9 @@ export default class APage extends ui.view.APageUI {
       },
       this,
     )
+  }
+  @readonly
+  public bark() {
+    var s = 1
   }
 }

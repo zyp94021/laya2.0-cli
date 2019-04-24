@@ -2,6 +2,11 @@ const layerView = []
 const views = {}
 const layers = {}
 let scene: Laya.Scene
+export const readonly=(target,key,descriptor)=>{
+  descriptor.writable = false
+  return descriptor
+}
+
 export const View = Layer => {
   return View => {
     let layer = layerView.find(layer => layer.Layer === Layer)
