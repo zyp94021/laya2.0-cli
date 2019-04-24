@@ -1,14 +1,10 @@
 import { ui } from '../ui/layaMaxUI'
 import GameApp from '../core/game/GameApp'
-import { openView, createViews, registerView } from '../decorators/LayerViewMgr'
-import BaseTest from '../view/BaseTest'
+import { openView, createViews } from '../decorators/LayerViewMgr'
 import { ControllerConst } from '../game/const/ControllerConst'
 import APageController from '../game/ui/view/APage/APageController'
-import APageModel from '../game/ui/view/APage/ApageModel'
 import APage from '../view/APage'
 import BPageController from '../game/ui/view/BPage/BPageController'
-import BPageModel from '../game/ui/view/BPage/BPageModel'
-import BPage from '../view/BPage'
 export default class MainScene extends ui.scene.MainSceneUI {
   public constructor() {
     super()

@@ -1,12 +1,4 @@
 import GameConfig from './GameConfig'
-import { createViews, openView } from './decorators/LayerViewMgr'
-import BaseTest from './view/BaseTest'
-import ViewTest from './view/ViewTest'
-import ViewTest1 from './view/ViewTest1'
-import { BaseLayer } from './core/game/scenes/BaseLayer'
-import { DialogLayer } from './core/game/scenes/DialogLayer'
-import DialogTest from './view/DialogTest'
-import Loading from './view/Loading'
 class Main {
   public constructor() {
     //根据IDE设置初始化引擎
