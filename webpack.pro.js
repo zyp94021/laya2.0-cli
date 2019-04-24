@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const crypto = require('crypto')
 const hash = crypto.createHash('sha256').digest('hex')
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const fs = require('fs')
 const { libs, skipFiles, skipCopy } = require('./conf')
 const filePath = path.resolve(__dirname, 'bin')
@@ -45,40 +45,26 @@ const fileDisplay = filePath => {
 }
 fileDisplay(filePath)
 module.exports = {
-  entry: { ...libs, polyfill: '@babel/polyfill', index: './src/Main.ts' },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     minSize: 20000,
-  //     //其他入口chunk引用的次数
-  //     minChunks: 1,
-  //     //默认使用name + hash生成文件名
-  //     name: true,
-  //     //使用自定义缓存组
-  //     cacheGroups: {
-  //       //公共模块
-  //       commons: {
-  //         name: 'common',
-  //         //缓存优先级设置
-  //         priority: 10,
-  //         //从入口chunk提取
-  //         chunks: 'initial',
-  //       },
-  //       //提取第三方库
-  //       vendors: {
-  //         //符合条件的放入当前缓存组
-  //         test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendors',
-  //         chunks: 'all',
-  //       },
-  //     },
-  //   },
-  //   //提取webpack运行文件
-  //   runtimeChunk: {
-  //     name: 'manifest',
-  //   },
-  // },
-
+  entry: { ...libs, index: './src/Main.ts' },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          name: 'lib',
+        },
+      },
+    },
+  },
   module: {
     rules: [
       {
@@ -93,7 +79,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist/'),
-    filename: chunkData => (chunkData.chunk.name === 'index' ? `[name].bundle.${hash}.js` : `[name].bundle.js`),
+    filename: '[name].bundle.[chunkhash].js',
   },
   plugins: [
     new CopyPlugin([
@@ -117,7 +103,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Laya-Webpack',
       filename: 'index.html',
-      template: 'bin/index_tel.html',
+      template: 'html/index_tel.html',
     }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
@@ -125,5 +111,6 @@ module.exports = {
         quality: '85',
       },
     }),
+    new BundleAnalyzerPlugin(),
   ],
 }
