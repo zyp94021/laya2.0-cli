@@ -4,6 +4,8 @@ import { ViewMgr } from './scenes/ViewMgr'
 import Socket from '../../net/socket'
 import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
+
+import GameNet from '../../net/http/GameNet'
 export default class GameApp {
   // 全局配置数据
   public static GlobalData: any = null
@@ -37,5 +39,8 @@ export default class GameApp {
   }
   public static get Socket(): Socket {
     return Socket.CreateOrGet()
+  }
+  public static get net(): GameNet {
+    return GameNet.CreateOrGet()
   }
 }
