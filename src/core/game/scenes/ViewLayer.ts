@@ -2,7 +2,7 @@ import { BaseLayer } from './BaseLayer'
 
 import { IView } from './interface/IView'
 
-import { LayerConst } from './LayerConst'
+import { LayerConst } from '../../const/LayerConst'
 
 const dis = 100
 const time = 240

@@ -1,7 +1,4 @@
 import BaseController from '../../../../core/mvc/controller/BaseController'
-import APageModel from './ApageModel';
-import { registerView } from '../../../../decorators/LayerViewMgr';
-import APage from '../../../../view/APage';
 export default class APageController extends BaseController {
   /**
    *
@@ -11,8 +8,6 @@ export default class APageController extends BaseController {
   }
   public init() {
     super.init()
-    this.setModel(new APageModel())
-    this.setView(registerView(APage,this))
   }
 
 }

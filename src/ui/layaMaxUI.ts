@@ -19,7 +19,8 @@ export module ui.view {
     export class APageUI extends BaseView {
 		public btn:Laya.Button;
 		public contents:Laya.Label;
-        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"Label","props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14}],"loadList":["comp/button.png"],"loadList3D":[]};
+		public baseBtn:Laya.Button;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"Label","props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14},{"type":"Button","props":{"y":670,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},"compId":15}],"loadList":["comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -56,7 +57,7 @@ export module ui.view {
 		public box:Laya.Box;
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_2.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Box","props":{"width":200,"var":"box","height":200,"centerY":0,"centerX":0},"compId":9,"child":[{"type":"Image","props":{"top":0,"skin":"comp/image.png","sizeGrid":"0,0,0,0","right":0,"left":0,"bottom":0},"compId":10},{"type":"Clip","props":{"y":550,"x":303,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":39,"x":62.5,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}]}],"loadList":["Characters/Tank_2.png","comp/image.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":300},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_2.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Box","props":{"width":200,"var":"box","height":200,"centerY":0,"centerX":0},"compId":9,"child":[{"type":"Image","props":{"top":0,"skin":"comp/image.png","sizeGrid":"0,0,0,0","right":0,"left":0,"bottom":0},"compId":10},{"type":"Clip","props":{"y":550,"x":303,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":39,"x":62.5,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}]}],"loadList":["Characters/Tank_2.png","comp/image.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

@@ -1,6 +1,6 @@
 import { IView } from './interface/IView'
 import { Singleton } from '../../base/Singleton'
-import { ViewConst } from './ViewConst'
+import { ViewConst } from '../../const/ViewConst'
 
 export class ViewMgr extends Singleton {
   public constructor() {

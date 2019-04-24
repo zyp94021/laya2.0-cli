@@ -1,10 +1,6 @@
 import { ui } from '../ui/layaMaxUI'
-import GameApp from '../core/game/GameApp'
-import { openView, createViews } from '../decorators/LayerViewMgr'
-import { ControllerConst } from '../game/const/ControllerConst'
-import APageController from '../game/ui/view/APage/APageController'
-import APage from '../view/APage'
-import BPageController from '../game/ui/view/BPage/BPageController'
+import APage from '../game/ui/view/APage/APage'
+import { setUIRoot, openView } from '../core/mvc/MvcMgr'
 export default class MainScene extends ui.scene.MainSceneUI {
   public constructor() {
     super()
@@ -14,10 +10,7 @@ export default class MainScene extends ui.scene.MainSceneUI {
     UI.width = Laya.stage.width
     UI.height = Laya.stage.height
     Laya.stage.addChild(UI)
-    createViews(UI)
-
-    GameApp.controllerMgr.register(ControllerConst.APage, new APageController())
-    GameApp.controllerMgr.register(ControllerConst.BPage, new BPageController())
+    setUIRoot(UI)
 
     openView(APage)
   }

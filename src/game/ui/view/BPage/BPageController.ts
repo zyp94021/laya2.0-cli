@@ -1,9 +1,6 @@
-import BaseController from "../../../../core/mvc/controller/BaseController";
-import BPageModel from "./BPageModel";
-import BPage from "../../../../view/BPage";
-import { registerView } from "../../../../decorators/LayerViewMgr";
+import BaseController from '../../../../core/mvc/controller/BaseController'
 
-export default class BPageController extends BaseController{
+export default class BPageController extends BaseController {
   /**
    *
    */
@@ -12,7 +9,5 @@ export default class BPageController extends BaseController{
   }
   public init() {
     super.init()
-    this.setModel(new BPageModel())
-    this.setView(registerView(BPage,this))
   }
 }

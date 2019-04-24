@@ -8,7 +8,7 @@ export default class EffectUtils extends Singleton {
    * @param {Function} callback 抖动动画完成回调函数
    * @param {any} thisObj 回调函数this对象
    */
-  public macIconShake(obj, initY, callback, thisObj) {
+  public static macIconShake(obj, initY, callback, thisObj) {
     //抖动频率[时间，移动距离]，可修改
     let arr = [[20, 300], [15, 300], [10, 300], [5, 300]]
 
@@ -50,7 +50,7 @@ export default class EffectUtils extends Singleton {
    * @param {any} thisObj 回调函数this对象
    * @param {Array} arrData 回调传参
    */
-  public flowOut(obj, time = 500, ease = null, callback = null, thisObj = null, arrData = null) {
+  public static flowOut(obj, time = 500, ease = null, callback = null, thisObj = null, arrData = null) {
     if (callback) {
       Laya.Tween.to(obj, { y: obj.y - 150, alpha: 0 }, time, ease, Laya.Handler.create(thisObj, callback, arrData))
     } else {
@@ -65,7 +65,7 @@ export default class EffectUtils extends Singleton {
    * @param {Function} callback 淡出完成回调函数
    * @param {any} thisObj 回调函数this对象
    */
-  public flowNum(startNum, endNum, callback, thisObj = null) {
+  public static flowNum(startNum, endNum, callback, thisObj = null) {
     let change = Math.abs(endNum - startNum)
     if (change <= 0) return
     let everyChange = change / (endNum - startNum)
@@ -90,7 +90,7 @@ export default class EffectUtils extends Singleton {
    * @param {Sprite} obj
    * @param {number} alphaTime 闪烁频率
    */
-  public startFlicker(obj, alphaTime = 700) {
+  public static startFlicker(obj, alphaTime = 700) {
     obj.alpha = 1
     Laya.Tween.to(
       obj,
@@ -112,7 +112,7 @@ export default class EffectUtils extends Singleton {
    * @param {number} xPos
    * @param {number} yPos
    */
-  public stopEffect(obj, xPos = null, yPos = null) {
+  public static stopEffect(obj, xPos = null, yPos = null) {
     Laya.Tween.clearAll(obj)
     if (xPos !== null && yPos !== null) {
       obj.pos(xPos, yPos)
@@ -124,16 +124,16 @@ export default class EffectUtils extends Singleton {
    * @param {Laya.Sprite}
    * @param {boolean} isChangeXY 如果中心点是锚点不需要修改位置
    */
-  public clickEffect(sp, isChangeXY = true) {
+  public static clickEffect(sp, isChangeXY = true) {
     if (!sp) return
     sp.off(Laya.Event.MOUSE_DOWN, this, this.cubicInOutEffect)
     sp.on(Laya.Event.MOUSE_DOWN, this, this.cubicInOutEffect, [sp, isChangeXY])
   }
-  public clearClickEffect(sp) {
+  public static clearClickEffect(sp) {
     if (!sp) return
     sp.off(Laya.Event.MOUSE_DOWN, this, this.cubicInOutEffect)
   }
-  public cubicInOutEffect(sp, isChangeXY) {
+  public static cubicInOutEffect(sp, isChangeXY) {
     if (sp._aniButtonEffect) return
     sp._aniButtonEffect = true
     let _x = sp.x

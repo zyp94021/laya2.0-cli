@@ -1,7 +1,7 @@
 import { BaseLayer } from './BaseLayer'
 import { ILayer } from './interface/ILayer'
-import { LayerConst } from './LayerConst'
-import { closeView } from '../../../decorators/LayerViewMgr'
+import { LayerConst } from '../../const/LayerConst'
+import { closeView } from '../../mvc/MvcMgr'
 class Mask extends Laya.Image {
   public constructor() {
     super()
@@ -17,7 +17,7 @@ export class DialogLayer extends BaseLayer implements ILayer {
   static layerKey = LayerConst.dialog
 
   private masks: Map<string, Laya.Image> = new Map()
-  
+
   public openView(view: any, ...args: any[]): void {
     let mask = this.masks.get(view.constructor.viewKey)
     if (!mask) {
@@ -28,7 +28,7 @@ export class DialogLayer extends BaseLayer implements ILayer {
     }
     mask.width = this.width
     mask.height = this.height
-    
+
     this.masks.set(view.constructor.viewKey, mask)
     this.addChild(mask)
     super.openView.apply(this, [view, ...args])
