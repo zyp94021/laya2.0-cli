@@ -1,4 +1,5 @@
 import GameConfig from './GameConfig'
+import '@babel/polyfill'
 class Main {
   public constructor() {
     //根据IDE设置初始化引擎
@@ -9,8 +10,8 @@ class Main {
     // Laya.stage.scaleMode = GameConfig.scaleMode;
     Laya.stage.scaleMode = GameConfig.scaleMode
     Laya.stage.screenMode = GameConfig.screenMode
-    Laya.stage.alignV=GameConfig.alignV
-    Laya.stage.alignH=GameConfig.alignH
+    Laya.stage.alignV = GameConfig.alignV
+    Laya.stage.alignH = GameConfig.alignH
     //兼容微信不支持加载scene后缀场景
     Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson
 

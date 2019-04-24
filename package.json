@@ -8,9 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.pro.js",
+    "build": "webpack --mode production --config webpack.pro.js",
     "serve": "http-server -s -g -c-1 -o",
-    "start": "webpack --mode development --watch --progress --color --config webpack.dev.js"
+    "start": "webpack --mode development --watch --progress --color --config webpack.dev.js",
+    "dev": "webpack --mode development --progress --color --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +32,7 @@
     "ts-loader": "^5.3.3",
     "typescript": "^3.4.3",
     "webpack": "^4.30.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {

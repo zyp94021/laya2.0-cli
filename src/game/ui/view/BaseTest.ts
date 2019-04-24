@@ -25,13 +25,13 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
     })
 
     this.dialogBtn.on(Laya.Event.CLICK, this, () => {
-      openView(DialogTest, 1, 2, 3, 4, 5)
+      openView(DialogTest, 1, 2, 3)
     })
     this.viewBtn.on(Laya.Event.CLICK, this, () => {
-      openView(ViewTest, 1, 2, 3, 4, 5)
+      openView(ViewTest, 1, 2)
     })
     this.loadingBtn.on(Laya.Event.CLICK, this, () => {
-      openView(Loading, 1, 2, 3, 4, 5)
+      openView(Loading, 1, 2, 3)
     })
     this.closeBtn.on(Laya.Event.CLICK, this, () => {
       closeView(this)
