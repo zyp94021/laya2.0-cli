@@ -1,24 +1,46 @@
 import * as v from './ViewMgr'
 import * as c from './ControllerManager'
-const MVC = new Map()
+/**
+ * MVC
+ * [
+ *  {
+ *    viewKey,
+ *    View,
+ *    view,View实例
+ *    Layer,
+ *    layer,Layer实例
+ *    event,
+ *    Controller,
+ *    Model
+ *  }
+ * ]
+ */
+const MVC = []
+export const findByLayerKey = layerKey => MVC.find(item => item.Layer && item.Layer.layerKey === layerKey)
+export const findByViewKey = viewKey => MVC.find(item => item.viewKey === viewKey)
+export const updateMVCItem = ({ viewKey, ...prop }) => {
+  const index = MVC.findIndex(item => item.viewKey === viewKey)
+  let mvc
+  if (index > -1) {
+    const item = MVC[index]
+    mvc = { ...item, ...prop }
+    MVC.splice(index, 1, mvc)
+  } else {
+    mvc = { viewKey, ...prop }
+    MVC.push(mvc)
+  }
+  return mvc
+}
 let UI = Laya.stage
 const RegisterMVC = (Layer, Controller = null, Model = null) => {
   return View => {
-    console.log(View.viewKey)
-    let layer = MVC.get(Layer.layerKey)
-    if (!layer) {
-      layer = {
-        layerKey: Layer.layerKey,
-        Layer,
-        views: new Map(),
-      }
-      MVC.set(layer.layerKey, layer)
-    }
-    const view = layer.views.get(View.viewKey)
-    if (view) {
-      throw new Error(`viewKey ${View.viewKey} 重复`)
-    }
-    layer.views.set(View.viewKey, { layer, viewKey: View.viewKey, View, Model, Controller })
+    updateMVCItem({
+      viewKey: View.viewKey,
+      Layer,
+      Controller,
+      Model,
+      View,
+    })
   }
 }
 const setUIRoot = root => {

@@ -37,8 +37,11 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
     })
   }
   @Click('dialogBtn')
-  private todo1() {
-    openView(DialogTest, 1, 2, 3)
+  @Click('loadingBtn')
+  private todo1(type) {
+    console.log('click')
+    console.log(type)
+    console.log(this)
   }
   public openCb() {
     console.log('BaseTest open')
