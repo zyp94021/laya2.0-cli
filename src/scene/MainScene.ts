@@ -12,7 +12,7 @@ export default class MainScene extends ui.scene.MainSceneUI {
     Laya.stage.addChild(UI)
     setUIRoot(UI)
 
-    openView(APage)
+    openView(APage,{a:1,b:2})
   }
   onOpened() {}
 }

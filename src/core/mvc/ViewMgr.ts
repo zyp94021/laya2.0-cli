@@ -25,8 +25,8 @@ export module mvc {
 
     public openView(View, ...args): void {
       let _view = this.openViews.get(View.viewKey)
-      if (_view) {
-        _view.open.apply(_view, args)
+      if (_view&&_view.openCb) {
+        _view.openCb.apply(_view, args)
         return
       }
       _view = this.getView(View.viewKey)

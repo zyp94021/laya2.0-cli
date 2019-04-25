@@ -28,4 +28,8 @@ export default class APage extends ui.view.APageUI {
       this,
     )
   }
+  public openCb(args)
+  {
+    console.log(args)
+  }
 }
