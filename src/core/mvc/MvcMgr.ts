@@ -16,7 +16,6 @@ import * as c from './ControllerManager'
  * ]
  */
 const MVC = []
-export const findByLayerKey = layerKey => MVC.find(item => item.Layer && item.Layer.layerKey === layerKey)
 export const findByViewKey = viewKey => MVC.find(item => item.viewKey === viewKey)
 export const updateMVCItem = ({ viewKey, ...prop }) => {
   const index = MVC.findIndex(item => item.viewKey === viewKey)

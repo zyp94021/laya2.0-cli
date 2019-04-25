@@ -1,7 +1,8 @@
 import BaseModel from '../model/BaseModel'
-import * as v from "../view/BaseView";
-import BaseView =v.KUI.BaseView
-import GameApp from '../../game/GameApp';
+import * as v from '../view/BaseView'
+import BaseView = v.KUI.BaseView
+import GameApp from '../../game/GameApp'
+import { dispatcher } from '../../service/dispatcher/Dispatcher'
 
 export default class BaseController {
   private model: BaseModel
@@ -11,10 +12,7 @@ export default class BaseController {
     this.view = null
     this.init()
   }
-  public init()
-  {
-    
-  }
+  public init() {}
   public setModel(model) {
     this.model = model
   }
@@ -30,15 +28,15 @@ export default class BaseController {
 
   //监听事件
   public addListener(key, callback, caller) {
-    GameApp.dispatcher.Observe(key,caller,callback)
+    dispatcher.Observe(key, caller, callback)
   }
   //移除监听的事件
   public removeListener(key) {
-    GameApp.dispatcher.Remove(key)
+    dispatcher.Remove(key)
   }
   //触发事件
   public dispatch(key, ...args) {
-    GameApp.dispatcher.SendMsg(key,args)
+    dispatcher.SendMsg(key, args)
   }
   /**
    * 注册从服务器返回消息的监听

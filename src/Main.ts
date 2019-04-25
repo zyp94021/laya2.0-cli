@@ -1,5 +1,4 @@
 import GameConfig from './GameConfig'
-import '@babel/polyfill'
 class Main {
   public constructor() {
     //根据IDE设置初始化引擎

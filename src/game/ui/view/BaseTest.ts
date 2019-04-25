@@ -7,6 +7,7 @@ import ViewTest from './ViewTest'
 import Loading from './Loading'
 import { RegisterMVC, openView, closeView } from '../../../core/mvc/MvcMgr'
 import { Click } from '../../../core/mvc/UIEvent'
+import GameApp from '../../../core/game/GameApp'
 @RegisterMVC(BaseLayer)
 export default class BaseTest extends ui.view.BaseTestUI implements IView {
   static viewKey = ViewConst.BaseTest
@@ -38,10 +39,8 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
   }
   @Click('dialogBtn')
   @Click('loadingBtn')
-  private todo1(type) {
-    console.log('click')
-    console.log(type)
-    console.log(this)
+  private async todo1(type) {
+    console.log(await GameApp.fetch.post('get', { a: [1, 2], c: 'hahahaha' }))
   }
   public openCb() {
     console.log('BaseTest open')
