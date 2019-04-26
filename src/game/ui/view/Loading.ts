@@ -3,6 +3,7 @@ import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
 import { BaseLayer } from '../../../core/mvc/layer/BaseLayer'
 import { RegisterMVC, closeView } from '../../../core/mvc/MvcMgr'
+import store from '../../store/store'
 @RegisterMVC(BaseLayer)
 export default class Loading extends ui.view.LoadingUI implements IView {
   static viewKey = ViewConst.Loading
@@ -25,6 +26,12 @@ export default class Loading extends ui.view.LoadingUI implements IView {
     })
   }
   public openCb(...args) {
+    super.openCb()
     console.log('Loading open', args)
+  }
+  public updateView() {
+    const { user, token, testData } = store.getState()
+    this.username.text = user.name
+    this.token.text = token
   }
 }

@@ -2,11 +2,11 @@
     "x":0,
     "type":"BaseView",
     "selectedBox":2,
-    "selecteID":16,
+    "selecteID":18,
     "searchKey":"BaseView",
     "props":{"width":640,"sceneColor":"#000000","height":1136},
     "nodeParent":-1,
-    "maxID":17,
+    "maxID":19,
     "label":"BaseView",
     "isOpen":true,
     "isDirectory":true,
@@ -68,6 +68,34 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":15,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label,token",
+            "props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},
+            "nodeParent":2,
+            "label":"token",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":17,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label,username",
+            "props":{"y":276,"x":159,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},
+            "nodeParent":2,
+            "label":"username",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":18,
             "child":[
                 ]
         }],

@@ -3,6 +3,7 @@ import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
 import { DialogLayer } from '../../../core/mvc/layer/DialogLayer'
 import { RegisterMVC, closeView } from '../../../core/mvc/MvcMgr'
+import store from '../../store/store'
 @RegisterMVC(DialogLayer)
 export default class DialogTest extends ui.view.DialogTestUI implements IView {
   static viewKey = ViewConst.DialogTest
@@ -28,7 +29,13 @@ export default class DialogTest extends ui.view.DialogTestUI implements IView {
     })
   }
   public openCb(...args) {
+    super.openCb()
     console.log('DialogTest open', args)
     // console.log(this.img['onCompResize']())
+  }
+  public updateView() {
+    const { user, token, testData } = store.getState()
+    this.username.text = user.name
+    this.token.text = token
   }
 }

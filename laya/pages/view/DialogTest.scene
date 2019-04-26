@@ -1,13 +1,13 @@
 {
     "x":0,
-    "type":"View",
+    "type":"BaseView",
     "selectedBox":2,
-    "selecteID":11,
-    "searchKey":"View",
+    "selecteID":13,
+    "searchKey":"BaseView",
     "props":{"width":640,"sceneColor":"#000000","height":1136},
     "nodeParent":-1,
-    "maxID":12,
-    "label":"View",
+    "maxID":14,
+    "label":"BaseView",
     "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
@@ -70,6 +70,34 @@
                     "child":[
                         ]
                 }]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label,token",
+            "props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},
+            "nodeParent":2,
+            "label":"token",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":12,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label,username",
+            "props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},
+            "nodeParent":2,
+            "label":"username",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":13,
+            "child":[
+                ]
         }],
     "animations":[
         {

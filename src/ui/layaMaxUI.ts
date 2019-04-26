@@ -20,7 +20,9 @@ export module ui.view {
 		public btn:Laya.Button;
 		public contents:Laya.Label;
 		public baseBtn:Laya.Button;
-        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"Label","props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14},{"type":"Button","props":{"y":670,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},"compId":15}],"loadList":["comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"Label","props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14},{"type":"Button","props":{"y":670,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},"compId":15},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},"compId":17},{"type":"Label","props":{"y":276,"x":159,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},"compId":18}],"loadList":["comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -28,13 +30,15 @@ export module ui.view {
         }
     }
     REG("ui.view.APageUI",APageUI);
-    export class BaseTestUI extends View {
+    export class BaseTestUI extends BaseView {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
 		public dialogBtn:Laya.Button;
 		public loadingBtn:Laya.Button;
 		public viewBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":252,"x":472,"var":"dialogBtn","skin":"comp/button.png","label":"dialog"},"compId":5},{"type":"Button","props":{"y":304,"x":472,"var":"loadingBtn","skin":"comp/button.png","label":"base"},"compId":6},{"type":"Button","props":{"y":362,"x":472,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":7}],"loadList":["comp/image.png","Characters/Tank_8.png","comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/Tank_8.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":252,"x":472,"var":"dialogBtn","skin":"comp/button.png","label":"dialog"},"compId":5},{"type":"Button","props":{"y":304,"x":472,"var":"loadingBtn","skin":"comp/button.png","label":"base"},"compId":6},{"type":"Button","props":{"y":362,"x":472,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":7},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},"compId":9},{"type":"Label","props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},"compId":10}],"loadList":["comp/image.png","Characters/Tank_8.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -45,7 +49,9 @@ export module ui.view {
     export class BPageUI extends BaseView {
 		public change:Laya.Button;
 		public close_btn:Laya.Button;
-        public static  uiView:any ={"type":"BaseView","props":{"width":300,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":300,"lineWidth":1,"height":1136,"fillColor":"#cdf9a4"},"compId":3},{"type":"Button","props":{"y":534,"x":59,"width":200,"var":"change","skin":"comp/button.png","label":"ChangeAPage","height":50},"compId":4},{"type":"Button","props":{"y":644,"x":59,"width":200,"var":"close_btn","skin":"comp/button.png","label":"Close","height":50},"compId":5}],"loadList":["comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":300,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":300,"lineWidth":1,"height":1136,"fillColor":"#cdf9a4"},"compId":3},{"type":"Button","props":{"y":534,"x":59,"width":200,"var":"change","skin":"comp/button.png","label":"ChangeAPage","height":50},"compId":4},{"type":"Button","props":{"y":644,"x":59,"width":200,"var":"close_btn","skin":"comp/button.png","label":"Close","height":50},"compId":5},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#000000"},"compId":7},{"type":"Label","props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#000000"},"compId":8}],"loadList":["comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -53,11 +59,13 @@ export module ui.view {
         }
     }
     REG("ui.view.BPageUI",BPageUI);
-    export class DialogTestUI extends View {
+    export class DialogTestUI extends BaseView {
 		public box:Laya.Box;
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Box","props":{"width":200,"var":"box","height":200,"centerY":0,"centerX":0},"compId":9,"child":[{"type":"Image","props":{"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":10},{"type":"Clip","props":{"y":550,"x":303,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":39,"x":62.5,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}]}],"loadList":["comp/image.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Box","props":{"width":200,"var":"box","height":200,"centerY":0,"centerX":0},"compId":9,"child":[{"type":"Image","props":{"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":10},{"type":"Clip","props":{"y":550,"x":303,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":39,"x":62.5,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}]},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},"compId":12},{"type":"Label","props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},"compId":13}],"loadList":["comp/image.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -65,11 +73,13 @@ export module ui.view {
         }
     }
     REG("ui.view.DialogTestUI",DialogTestUI);
-    export class LoadingUI extends View {
+    export class LoadingUI extends BaseView {
 		public tank:Laya.Clip;
 		public btn_close:Laya.Button;
 		public btn_connect:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_7.png","right":0,"left":0,"bottom":0},"compId":17},{"type":"Clip","props":{"var":"tank","skin":"Characters/Tank_4.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282.5,"var":"btn_close","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":222,"x":282.5,"var":"btn_connect","skin":"comp/button.png","label":"connect"},"compId":5}],"loadList":["Characters/Tank_7.png","Characters/Tank_4.png","comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_7.png","right":0,"left":0,"bottom":0},"compId":17},{"type":"Clip","props":{"var":"tank","skin":"Characters/Tank_4.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282.5,"var":"btn_close","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":222,"x":282.5,"var":"btn_connect","skin":"comp/button.png","label":"connect"},"compId":5},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},"compId":18},{"type":"Label","props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},"compId":19}],"loadList":["Characters/Tank_7.png","Characters/Tank_4.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -77,11 +87,13 @@ export module ui.view {
         }
     }
     REG("ui.view.LoadingUI",LoadingUI);
-    export class ViewTestUI extends View {
+    export class ViewTestUI extends BaseView {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
 		public viewBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":7},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":385,"x":282.5,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":5}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":7},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Button","props":{"y":385,"x":282.5,"var":"viewBtn","skin":"comp/button.png","label":"view"},"compId":5},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},"compId":9},{"type":"Label","props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},"compId":10}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
@@ -89,10 +101,12 @@ export module ui.view {
         }
     }
     REG("ui.view.ViewTestUI",ViewTestUI);
-    export class ViewTest1UI extends View {
+    export class ViewTest1UI extends BaseView {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":6},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
+		public token:Laya.Label;
+		public username:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Image","props":{"y":0,"x":0,"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":6},{"type":"Clip","props":{"y":0,"x":0,"var":"tank","skin":"Characters/$狼.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":327,"x":282,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4},{"type":"Label","props":{"y":181,"x":105,"var":"token","text":"token","fontSize":30,"color":"#ffffff"},"compId":7},{"type":"Label","props":{"y":257,"x":105,"var":"username","text":"token","fontSize":30,"color":"#ffffff"},"compId":8}],"loadList":["comp/image.png","Characters/$狼.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

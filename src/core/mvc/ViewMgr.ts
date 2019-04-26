@@ -2,7 +2,7 @@ import { IView } from './interface/IView'
 
 import { ILayer } from './interface/ILayer'
 
-import { MVC, UI, controllerMgr, findByViewKey } from './MvcMgr'
+import { UI, controllerMgr, findByViewKey } from './MvcMgr'
 import { bindEvent } from './UIEvent'
 
 export module mvc {

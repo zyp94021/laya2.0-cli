@@ -4,6 +4,7 @@ import { ViewConst } from '../../../core/const/ViewConst'
 import { ViewLayer } from '../../../core/mvc/layer/ViewLayer'
 import ViewTest1 from './ViewTest1'
 import { RegisterMVC, closeView, openView } from '../../../core/mvc/MvcMgr'
+import store from '../../store/store'
 @RegisterMVC(ViewLayer)
 export default class ViewTest extends ui.view.ViewTestUI implements IView {
   static viewKey = ViewConst.ViewTest
@@ -30,6 +31,12 @@ export default class ViewTest extends ui.view.ViewTestUI implements IView {
     })
   }
   public openCb() {
+    super.openCb()
     console.log('ViewTest open')
+  }
+  public updateView() {
+    const { user, token, testData } = store.getState()
+    this.username.text = user.name
+    this.token.text = token
   }
 }

@@ -4,10 +4,12 @@ import { DialogLayer } from '../../../../core/mvc/layer/DialogLayer'
 import BPageController from './BPageController'
 import BPageModel from './BPageModel'
 import { RegisterMVC, closeView } from '../../../../core/mvc/MvcMgr'
+import store from '../../../store/store'
+import { changeData1 } from '../../../store/actions'
 @RegisterMVC(DialogLayer, BPageController, BPageModel)
 export default class BPage extends ui.view.BPageUI {
   static viewKey = ViewConst.BPage
- 
+
   constructor() {
     super()
   }
@@ -16,7 +18,13 @@ export default class BPage extends ui.view.BPageUI {
       closeView(this)
     })
     this.change.on(Laya.Event.CLICK, this, () => {
-      this.controller.dispatch('change', ['#ee3321'])
+      // this.controller.dispatch('change', ['#ee3321'])
+      store.dispatch(changeData1('hello world'))
     })
+  }
+  public updateView() {
+    const { user, token, testData } = store.getState()
+    this.username.text = user.name
+    this.token.text = token
   }
 }
