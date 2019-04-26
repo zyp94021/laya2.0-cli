@@ -58,7 +58,7 @@ export module ui.view {
 		public box:Laya.Box;
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":640,"height":300},"compId":2,"child":[{"type":"Image","props":{"top":0,"skin":"Characters/Tank_2.png","right":0,"left":0,"bottom":0},"compId":8},{"type":"Box","props":{"width":200,"var":"box","height":200,"centerY":0,"centerX":0},"compId":9,"child":[{"type":"Image","props":{"top":0,"skin":"comp/image.png","sizeGrid":"0,0,0,0","right":0,"left":0,"bottom":0},"compId":10},{"type":"Clip","props":{"y":550,"x":303,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":39,"x":62.5,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}]}],"loadList":["Characters/Tank_2.png","comp/image.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
+        public static  uiView:any ={"type":"View","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Box","props":{"width":200,"var":"box","height":200,"centerY":0,"centerX":0},"compId":9,"child":[{"type":"Image","props":{"top":0,"skin":"comp/image.png","right":0,"left":0,"bottom":0},"compId":10},{"type":"Clip","props":{"y":550,"x":303,"var":"tank","skin":"Characters/Tank_7.png","index":4,"clipY":4,"clipX":4,"centerY":-1,"centerX":0},"compId":3},{"type":"Button","props":{"y":39,"x":62.5,"var":"closeBtn","skin":"comp/button.png","label":"close"},"compId":4}]}],"loadList":["comp/image.png","Characters/Tank_7.png","comp/button.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

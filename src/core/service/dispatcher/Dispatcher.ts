@@ -65,3 +65,5 @@ export class Dispatcher extends Singleton {
     arr.splice(0, arr.length)
   }
 }
+const dispatcher = new Dispatcher()
+export { dispatcher }

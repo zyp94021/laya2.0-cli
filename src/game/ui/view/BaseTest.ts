@@ -1,11 +1,13 @@
 import { ui } from '../../../ui/layaMaxUI'
-import { IView } from '../../../core/game/scenes/interface/IView'
+import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
-import { BaseLayer } from '../../../core/game/scenes/BaseLayer'
+import { BaseLayer } from '../../../core/mvc/layer/BaseLayer'
 import DialogTest from './DialogTest'
 import ViewTest from './ViewTest'
 import Loading from './Loading'
 import { RegisterMVC, openView, closeView } from '../../../core/mvc/MvcMgr'
+import { Click } from '../../../core/mvc/UIEvent'
+import GameApp from '../../../core/game/GameApp'
 @RegisterMVC(BaseLayer)
 export default class BaseTest extends ui.view.BaseTestUI implements IView {
   static viewKey = ViewConst.BaseTest
@@ -24,9 +26,7 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
       this.moveY = !this.moveY
     })
 
-    this.dialogBtn.on(Laya.Event.CLICK, this, () => {
-      openView(DialogTest, 1, 2, 3)
-    })
+    this.dialogBtn.on(Laya.Event.CLICK, this, () => {})
     this.viewBtn.on(Laya.Event.CLICK, this, () => {
       openView(ViewTest, 1, 2)
     })
@@ -36,6 +36,11 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
     this.closeBtn.on(Laya.Event.CLICK, this, () => {
       closeView(this)
     })
+  }
+  @Click('dialogBtn')
+  @Click('loadingBtn')
+  private async todo1(type) {
+    console.log(await GameApp.fetch.post('get', { a: [1, 2], c: 'hahahaha' }))
   }
   public openCb() {
     console.log('BaseTest open')

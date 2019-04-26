@@ -1,7 +1,7 @@
 import { ui } from '../../../ui/layaMaxUI'
-import { IView } from '../../../core/game/scenes/interface/IView'
+import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
-import { ViewLayer } from '../../../core/game/scenes/ViewLayer'
+import { ViewLayer } from '../../../core/mvc/layer/ViewLayer'
 import ViewTest1 from './ViewTest1'
 import { RegisterMVC, closeView, openView } from '../../../core/mvc/MvcMgr'
 @RegisterMVC(ViewLayer)

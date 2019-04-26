@@ -1,8 +1,9 @@
-import { IView } from '../game/scenes/interface/IView'
+import { IView } from './interface/IView'
 
-import { ILayer } from '../game/scenes/interface/ILayer'
+import { ILayer } from './interface/ILayer'
 
-import { MVC, UI, controllerMgr } from './MvcMgr'
+import { MVC, UI, controllerMgr, findByViewKey } from './MvcMgr'
+import { bindEvent } from './UIEvent'
 
 export module mvc {
   class ViewMgr {
@@ -16,8 +17,12 @@ export module mvc {
     public setView(key, view: IView): void {
       this.views.set(key, view)
     }
-    public getLayer(key): ILayer {
-      return this.layers.get(key)
+    public getLayer(Layer): ILayer {
+      let layer = this.layers.get(Layer.layerKey)
+      if (layer) return layer
+      layer = this.createLayer(Layer)
+      this.setLayer(Layer.layerKey, layer)
+      return layer
     }
     public setLayer(key, layer: ILayer): void {
       this.layers.set(key, layer)
@@ -25,7 +30,7 @@ export module mvc {
 
     public openView(View, ...args): void {
       let _view = this.openViews.get(View.viewKey)
-      if (_view&&_view.openCb) {
+      if (_view) {
         _view.openCb.apply(_view, args)
         return
       }
@@ -39,27 +44,25 @@ export module mvc {
       _view.layer.openView(_view, ...args)
     }
     private createView(View) {
-      const layer = MVC.find(layer => layer.views.find(view => view.View.viewKey === View.viewKey))
-      if (!layer) {
-        throw new Error('layer 不存在')
-      }
-      let _layer = this.getLayer(layer.Layer.layerKey)
-      if (!_layer) {
-        _layer = new layer.Layer(UI)
-        _layer.zOrder = layer.Layer.layerKey
-        UI.addChild(_layer)
-        this.setLayer(layer.Layer.layerKey, _layer)
-      }
-      const view = layer.views.find(view => view.View.viewKey === View.viewKey)
-      let _view = new view.View()
-      _view.layer = _layer
-      if (view.Controller) {
-        const _controller: any = controllerMgr.register(_view, view.Controller, view.Model)
-        _view.setController(_controller)
-      }
-      this.setView(view.View.viewKey, _view)
+      const mvc = findByViewKey(View.viewKey)
+      const layer = this.getLayer(mvc.Layer)
+
+      let _view = new mvc.View()
+      _view.layer = layer
+      mvc.view = _view
+      mvc.layer = layer
+      bindEvent(mvc)
+      controllerMgr.register(mvc)
+
+      this.setView(mvc.viewKey, _view)
       if (_view.init) _view.init()
       return _view
+    }
+    private createLayer(Layer) {
+      const _layer = new Layer(UI)
+      _layer.zOrder = Layer.layerKey
+      UI.addChild(_layer)
+      return _layer
     }
     public closeView(ViewOrKeyOrIns: any, ...args): void {
       let _view

@@ -1,7 +1,7 @@
 import { ui } from '../../../ui/layaMaxUI'
-import { IView } from '../../../core/game/scenes/interface/IView'
+import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
-import { BaseLayer } from '../../../core/game/scenes/BaseLayer'
+import { BaseLayer } from '../../../core/mvc/layer/BaseLayer'
 import { RegisterMVC, closeView } from '../../../core/mvc/MvcMgr'
 @RegisterMVC(BaseLayer)
 export default class Loading extends ui.view.LoadingUI implements IView {

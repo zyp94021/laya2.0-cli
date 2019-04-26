@@ -1,12 +1,12 @@
 import { BaseLayer } from './BaseLayer'
-import { ILayer } from './interface/ILayer'
+import { ILayer } from '../interface/ILayer'
 import { LayerConst } from '../../const/LayerConst'
-import { closeView } from '../../mvc/MvcMgr'
+import { closeView } from '../MvcMgr'
 class Mask extends Laya.Image {
   public constructor() {
     super()
     this.skin = 'comp/blank.png'
-    this.alpha = 0.8
+    this.sizeGrid = '2,2,2,2'
   }
 }
 export class DialogLayer extends BaseLayer implements ILayer {

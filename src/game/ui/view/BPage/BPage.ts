@@ -1,6 +1,6 @@
 import { ui } from '../../../../ui/layaMaxUI'
 import { ViewConst } from '../../../../core/const/ViewConst'
-import { DialogLayer } from '../../../../core/game/scenes/DialogLayer'
+import { DialogLayer } from '../../../../core/mvc/layer/DialogLayer'
 import BPageController from './BPageController'
 import BPageModel from './BPageModel'
 import { RegisterMVC, closeView } from '../../../../core/mvc/MvcMgr'

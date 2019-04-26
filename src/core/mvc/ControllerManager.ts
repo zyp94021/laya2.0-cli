@@ -2,16 +2,18 @@ export module mvc {
   class ControllerManager {
     private controllers = new Map()
 
-    public register(view, Controller, Model) {
-      const key = view.constructor.viewKey
+    public register(mvc) {
+      const key = mvc.viewKey
       if (this.isExists(key)) return
-      const controller = new Controller()
-      controller.setView(view)
-      if (Model) {
-        controller.setModel(new Model())
+      if (mvc.Controller) {
+        const controller = new mvc.Controller()
+        controller.setView(mvc.view)
+        if (mvc.Model) {
+          controller.setModel(new mvc.Model())
+        }
+        this.controllers.set(key, controller)
+        mvc.view.setController(controller)
       }
-      this.controllers.set(key, controller)
-      return controller
     }
     public unregister(controllerKey) {
       if (!this.isExists(controllerKey)) return

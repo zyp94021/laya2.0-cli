@@ -1,6 +1,6 @@
 import { BaseLayer } from './BaseLayer'
 
-import { IView } from './interface/IView'
+import { IView } from '../interface/IView'
 
 import { LayerConst } from '../../const/LayerConst'
 

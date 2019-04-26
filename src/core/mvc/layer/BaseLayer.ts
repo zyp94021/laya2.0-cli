@@ -1,6 +1,6 @@
-import { IView } from './interface/IView'
+import { IView } from '../interface/IView'
 import { LayerConst } from '../../const/LayerConst'
-import { ILayer } from './interface/ILayer'
+import { ILayer } from '../interface/ILayer'
 export class BaseLayer extends Laya.Sprite implements ILayer {
   protected ownScene: Laya.Scene
   constructor(scene: Laya.Scene) {

@@ -1,22 +1,45 @@
 import * as v from './ViewMgr'
 import * as c from './ControllerManager'
+/**
+ * MVC
+ * [
+ *  {
+ *    viewKey,
+ *    View,
+ *    view,View实例
+ *    Layer,
+ *    layer,Layer实例
+ *    event,
+ *    Controller,
+ *    Model
+ *  }
+ * ]
+ */
 const MVC = []
+export const findByViewKey = viewKey => MVC.find(item => item.viewKey === viewKey)
+export const updateMVCItem = ({ viewKey, ...prop }) => {
+  const index = MVC.findIndex(item => item.viewKey === viewKey)
+  let mvc
+  if (index > -1) {
+    const item = MVC[index]
+    mvc = { ...item, ...prop }
+    MVC.splice(index, 1, mvc)
+  } else {
+    mvc = { viewKey, ...prop }
+    MVC.push(mvc)
+  }
+  return mvc
+}
 let UI = Laya.stage
 const RegisterMVC = (Layer, Controller = null, Model = null) => {
   return View => {
-    let layer = MVC.find(layer => layer.Layer === Layer)
-    if (!layer) {
-      layer = {
-        Layer,
-        views: [],
-      }
-      MVC.push(layer)
-    }
-    const view = layer.views.find(view => view.View === View || view.View.viewKey === View.viewKey)
-    if (view) {
-      throw new Error(`View ${view.View} 已存在 || viewKey ${View.viewKey} 重复`)
-    }
-    layer.views.push({ layer, View, Model, Controller })
+    updateMVCItem({
+      viewKey: View.viewKey,
+      Layer,
+      Controller,
+      Model,
+      View,
+    })
   }
 }
 const setUIRoot = root => {

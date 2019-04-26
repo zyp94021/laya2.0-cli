@@ -1,7 +1,7 @@
 import { ui } from '../../../ui/layaMaxUI'
-import { IView } from '../../../core/game/scenes/interface/IView'
+import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
-import { DialogLayer } from '../../../core/game/scenes/DialogLayer'
+import { DialogLayer } from '../../../core/mvc/layer/DialogLayer'
 import { RegisterMVC, closeView } from '../../../core/mvc/MvcMgr'
 @RegisterMVC(DialogLayer)
 export default class DialogTest extends ui.view.DialogTestUI implements IView {
