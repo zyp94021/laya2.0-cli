@@ -19,7 +19,6 @@ class Main {
     if (GameConfig.physicsDebug && Laya['PhysicsDebugDraw']) Laya['PhysicsDebugDraw'].enable()
     if (GameConfig.stat) Laya.Stat.show()
     Laya.alertGlobalError = true
-
     //激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
     Laya.ResourceVersion.enable('version.json', Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION)
   }

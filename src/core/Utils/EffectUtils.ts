@@ -1,6 +1,5 @@
-import { Singleton } from '../base/Singleton'
 
-export default class EffectUtils extends Singleton {
+export default class EffectUtils  {
   /**
    * 类似mac上图标上下抖动的效果
    * @param {Sprite} obj 抖动对象

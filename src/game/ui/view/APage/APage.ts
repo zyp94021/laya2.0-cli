@@ -34,7 +34,19 @@ export default class APage extends ui.view.APageUI {
   public updateView() {
     const { user, token, testData } = store.getState()
     this.contents.text = testData.data1
-    this.username.text = user.name
-    this.token.text = token
+    // this.username.text = user.name
+    // this.token.text = token
+  }
+  public openCb(args) {
+    super.openCb()
+    var html = "<span style='fontSize:30' color='#67fc2c'>富文本</span>"
+    html += "<img style='height:50;width:50' src='Characters/Tank_4.png'></img>"
+    html += "<span style='fontSize:20' color='#fff'>测试</span>"
+    this.dd.pos(0, 0)
+    this.dd.style.width = 640
+    this.dd.style.align = 'center'
+
+    this.dd.innerHTML = html
+    console.log(this.dd)
   }
 }

@@ -1,6 +1,6 @@
 module.exports = {
   libs: {
-    laya: ['./bin/libs/laya.core.js', './bin/libs/laya.webgl.js', './bin/libs/laya.ui.js'],
+    laya: ['./bin/libs/laya.core.js','./bin/libs/laya.html.js', './bin/libs/laya.webgl.js', './bin/libs/laya.ui.js'],
     polyfill: ['@babel/polyfill', 'whatwg-fetch'],
   },
   skipFiles: ['libs', 'version.json', 'index.html', '.rec'],

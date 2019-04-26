@@ -19,11 +19,11 @@ export namespace KUI {
     public initData() {}
     public initRes() {}
     public initView() {}
-    public openCb() {
+    public openCb(...args) {
       this.updateView()
       this.unsubscribe = store.subscribe(this.updateView.bind(this))
     }
-    public closeCb() {
+    public closeCb(...args) {
       this.unsubscribe()
     }
     public updateView() {}

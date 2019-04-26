@@ -32,6 +32,7 @@ export class DialogLayer extends BaseLayer implements ILayer {
     this.masks.set(view.constructor.viewKey, mask)
     this.addChild(mask)
     super.openView.apply(this, [view, ...args])
+
     view.anchorX = 0.5
     view.anchorY = 0.5
     view.x = view.width / 2
