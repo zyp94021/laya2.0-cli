@@ -6,6 +6,7 @@ import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
 
 import GameNet from '../../net/http/GameNet'
+import EffectUtils from '../Utils/EffectUtils';
 export default class GameApp {
   // 全局配置数据
   public static GlobalData: any = null

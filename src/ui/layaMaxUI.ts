@@ -18,9 +18,10 @@ export module ui.scene {
 export module ui.view {
     export class APageUI extends BaseView {
 		public btn:Laya.Button;
-		public contents:Laya.Label;
+		public dd:laya.html.dom.HTMLDivElement;
 		public baseBtn:Laya.Button;
-        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"Label","props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14},{"type":"Button","props":{"y":670,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},"compId":15}],"loadList":["comp/button.png"],"loadList3D":[]};
+		public contents:Laya.Label;
+        public static  uiView:any ={"type":"BaseView","props":{"width":640,"height":1136},"compId":2,"child":[{"type":"Rect","props":{"width":640,"name":"r","lineWidth":1,"height":1136,"fillColor":"#fbbbbb"},"compId":7},{"type":"Button","props":{"y":555,"x":208,"width":200,"var":"btn","skin":"comp/button.png","label":"GoTo BPage","height":50},"compId":8},{"type":"HTMLDivElement","props":{"y":0,"x":0,"width":644,"var":"dd","innerHTML":"<br/><span>  测试水平居中对齐</span>","height":265,"runtime":"laya.html.dom.HTMLDivElement"},"compId":20},{"type":"Button","props":{"y":669,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},"compId":15,"child":[{"type":"Label","props":{"y":-627,"x":190,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},"compId":14}]},{"type":"Label","props":{"y":121,"x":275.5,"width":63,"valign":"middle","text":"label","height":22,"align":"center"},"compId":25},{"type":"Button","props":{"y":132,"x":426,"presetID":1,"width":192,"skin":"comp/button.png","label":"按钮脚本","isPresetRoot":true,"height":90},"compId":31,"child":[{"type":"Script","props":{"presetID":2,"y":1,"x":0,"runtime":"game/ui/view/APage/Test.ts"},"compId":32}]}],"loadList":["comp/button.png","prefab/Button.prefab"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

@@ -2,11 +2,11 @@
     "x":0,
     "type":"BaseView",
     "selectedBox":2,
-    "selecteID":15,
+    "selecteID":34,
     "searchKey":"BaseView",
     "props":{"width":640,"sceneColor":"#000000","height":1136},
     "nodeParent":-1,
-    "maxID":16,
+    "maxID":37,
     "label":"BaseView",
     "isOpen":true,
     "isDirectory":true,
@@ -45,15 +45,15 @@
         },
         {
             "x":15,
-            "type":"Label",
-            "searchKey":"Label,contents",
-            "props":{"y":41,"x":398,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},
+            "type":"HTMLDivElement",
+            "searchKey":"HTMLDivElement,dd",
+            "props":{"y":0,"x":0,"width":644,"var":"dd","innerHTML":"<br/><span>  测试水平居中对齐</span>","height":265},
             "nodeParent":2,
-            "label":"contents",
+            "label":"dd",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":14,
+            "compId":20,
             "child":[
                 ]
         },
@@ -61,15 +61,74 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,baseBtn",
-            "props":{"y":670,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},
+            "props":{"y":669,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},
             "nodeParent":2,
             "label":"baseBtn",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":15,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "searchKey":"Label,contents",
+                    "props":{"y":-627,"x":190,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},
+                    "nodeParent":15,
+                    "label":"contents",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":14,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label",
+            "props":{"y":121,"x":275.5,"width":63,"valign":"middle","text":"label","height":22,"align":"center"},
+            "nodeParent":2,
+            "label":"Label",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":15,
+            "compId":25,
             "child":[
                 ]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button",
+            "props":{"y":132,"x":426,"presetID":1,"preset":"laya/pages/prefab/Button.prefab"},
+            "nodeParent":2,
+            "label":"Button(Button)",
+            "isOpen":null,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":31,
+            "child":[
+                {
+                    "type":"Script",
+                    "switchAble":true,
+                    "source":"src/game/ui/view/APage/Test.ts",
+                    "searchKey":"Script,Test",
+                    "removeAble":true,
+                    "props":{"presetID":2,"preset":"laya/pages/prefab/Button.prefab"},
+                    "nodeParent":31,
+                    "label":"Test",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":32,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {
