@@ -40,6 +40,8 @@ const RegisterMVC = (Layer, Controller = null, Model = null) => {
       Model,
       View,
     })
+    console.log(View.argments)
+    return View
   }
 }
 const setUIRoot = root => {

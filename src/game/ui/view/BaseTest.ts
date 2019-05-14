@@ -40,10 +40,11 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
     })
   }
   @Click('dialogBtn')
-  @Click('loadingBtn')
-  private async todo1(type) {
+  @Click('loadingBtn', 1, 2, 3, 4)
+  private async todo1(...type) {
     store.dispatch(changeToken(Math.random()))
     store.dispatch(changeUsername(Math.random()))
+    console.log(type)
     console.log(await GameApp.fetch.post('get', { a: [1, 2], c: 'hahahaha' }))
   }
   public openCb() {

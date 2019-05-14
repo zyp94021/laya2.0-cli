@@ -9,7 +9,6 @@ import { changeData1 } from '../../../store/actions'
 @RegisterMVC(DialogLayer, BPageController, BPageModel)
 export default class BPage extends ui.view.BPageUI {
   static viewKey = ViewConst.BPage
-
   constructor() {
     super()
   }
