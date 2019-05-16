@@ -1,5 +1,5 @@
-import { ACTIONTYPE } from './actions'
-import { combineReducers } from 'redux'
+import { ACTIONTYPE, ActionTypes } from './actions'
+import { combineReducers, AnyAction } from 'redux'
 const changeTestData = (state = { data1: 'data1', data2: 'data2' }, action) => {
   switch (action.type) {
     case ACTIONTYPE.CHANGE_TESTDATA1:
@@ -28,5 +28,15 @@ const changeToken = (state = '', action) => {
 const changeTestData1 = (state, action) => {
   return state
 }
-const reducers = combineReducers({ testData: changeTestData, user: changeUsername, token: changeToken })
+export const todo = (state: any[] = [], action: AnyAction) => {
+  switch (action.type) {
+    case ActionTypes.addTodo:
+      return action.payload.length > 1 ? [...action.payload] : [...state, ...action.payload]
+    case ActionTypes.deleteTodo:
+      return [...state.filter(item => item.id !== action.payload)]
+    default:
+      return state
+  }
+}
+const reducers = combineReducers({ testData: changeTestData, user: changeUsername, token: changeToken, todo })
 export default reducers

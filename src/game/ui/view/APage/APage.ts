@@ -8,6 +8,7 @@ import APageModel from './ApageModel'
 import BaseTest from '../BaseTest'
 import '../../../store/store'
 import store from '../../../store/store'
+import { ActionTypes, actionRequest, deleteTodo } from '../../../store/actions'
 @RegisterMVC(BaseLayer, APageController, APageModel)
 export default class APage extends ui.view.APageUI {
   static viewKey = ViewConst.APage
@@ -19,6 +20,27 @@ export default class APage extends ui.view.APageUI {
     this.baseBtn.on(Laya.Event.CLICK, this, () => {
       openView(BaseTest)
     })
+
+    this.todoList.renderHandler = new Laya.Handler(this, this.updateTodo)
+    this.todoList.on(Laya.Event.CLICK, this, this.todoListClick)
+    this.addBtn.on(Laya.Event.CLICK, this, this.addTodo)
+  }
+  private updateTodo(cell: Laya.Box, index) {
+    const label = cell.getChildByName('label') as Laya.Label
+    const dataSource = cell.dataSource
+    label.text = dataSource.message
+  }
+  private todoListClick(e) {
+    if (e.target.var === 'deleteBtn') {
+      const box = e.target.parent as Laya.Box
+      store.dispatch(actionRequest(ActionTypes.deleteTodoRequest, box.dataSource.id))
+    }
+  }
+  private addTodo() {
+    if (this.addInput.text !== '') {
+      store.dispatch(actionRequest(ActionTypes.addTodoRequest, this.addInput.text))
+      this.addInput.text = ''
+    }
   }
   public init() {
     // this.controller.addListener(
@@ -32,10 +54,11 @@ export default class APage extends ui.view.APageUI {
   }
 
   public updateView() {
-    const { user, token, testData } = store.getState()
+    const { user, token, testData, todo } = store.getState()
     this.contents.text = testData.data1
     // this.username.text = user.name
     // this.token.text = token
+    this.todoList.array = todo
   }
   public openCb(args) {
     super.openCb()
@@ -48,5 +71,7 @@ export default class APage extends ui.view.APageUI {
 
     this.dd.innerHTML = html
     console.log(this.dd)
+
+    store.dispatch(actionRequest(ActionTypes.getTodoRequest))
   }
 }

@@ -5,7 +5,16 @@ export enum ACTIONTYPE {
   CHANGE_USERNAME,
   CHANGE_TOKEN,
 }
-
+export const ActionTypes = {
+  loginRequest: 'loginRequest',
+  loginSuccess: 'loginSuccess',
+  loginFail: 'loginFail',
+  getTodoRequest: 'getTodoRequest',
+  addTodoRequest: 'addTodoRequest',
+  addTodo: 'addTodo',
+  deleteTodo: 'deleteTodo',
+  deleteTodoRequest: 'deleteTodoRequest',
+}
 export const changeData1 = data1 => {
   return {
     type: ACTIONTYPE.CHANGE_TESTDATA1,
@@ -30,3 +39,16 @@ export const changeToken = token => {
     token,
   }
 }
+
+export const actionRequest = (type, payload?) => ({
+  type,
+  payload,
+})
+export const addTodo = payload => ({
+  type: ActionTypes.addTodo,
+  payload,
+})
+export const deleteTodo = payload => ({
+  type: ActionTypes.deleteTodo,
+  payload,
+})

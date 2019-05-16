@@ -40,6 +40,6 @@ export default class GameApp {
     return GameNet.CreateOrGet()
   }
   public static get fetch(): Fetch {
-    return Fetch.init('main', { url: 'http://10.1.100.97:3001/' })
+    return Fetch.init('main', { url: 'http://acgc.fun:3001' })
   }
 }

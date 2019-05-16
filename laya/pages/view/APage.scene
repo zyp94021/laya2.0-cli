@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"BaseView",
-    "selectedBox":2,
-    "selecteID":34,
+    "selectedBox":49,
+    "selecteID":52,
     "searchKey":"BaseView",
     "props":{"width":640,"sceneColor":"#000000","height":1136},
     "nodeParent":-1,
-    "maxID":37,
+    "maxID":56,
     "label":"BaseView",
     "isOpen":true,
     "isDirectory":true,
@@ -64,14 +64,13 @@
             "props":{"y":669,"x":208,"width":200,"var":"baseBtn","skin":"comp/button.png","label":"GoTo Base","height":50},
             "nodeParent":2,
             "label":"baseBtn",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":15,
             "child":[
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,contents",
                     "props":{"y":-627,"x":190,"width":201,"var":"contents","valign":"middle","text":"ssss","height":500,"fontSize":40,"align":"center"},
@@ -126,6 +125,104 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":32,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"List",
+            "searchKey":"List,todoList",
+            "props":{"y":132,"x":30,"width":260,"var":"todoList","repeatX":1,"height":308},
+            "nodeParent":2,
+            "label":"todoList",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":49,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"y":0,"x":0,"width":77,"renderType":"render","height":34},
+                    "nodeParent":49,
+                    "label":"Box",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":false,
+                    "hasChild":true,
+                    "compId":52,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "searchKey":"Label,label",
+                            "props":{"y":7,"x":0,"text":"label","renderType":"render","name":"label","fontSize":20},
+                            "nodeParent":52,
+                            "label":"label",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":50,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,deleteBtn",
+                            "props":{"y":5,"x":54,"width":23,"var":"deleteBtn","skin":"comp/button.png","label":"x","height":23},
+                            "nodeParent":52,
+                            "label":"deleteBtn",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":53,
+                            "child":[
+                                ]
+                        }]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box",
+            "props":{"y":422,"x":208,"width":225,"height":22},
+            "nodeParent":2,
+            "label":"Box",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":54,
+            "child":[
+                {
+                    "x":30,
+                    "type":"TextInput",
+                    "searchKey":"TextInput,addInput",
+                    "props":{"var":"addInput","skin":"comp/textinput.png"},
+                    "nodeParent":54,
+                    "label":"addInput",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":51,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,addBtn",
+                    "props":{"y":-1,"x":147,"var":"addBtn","skin":"comp/button.png","label":"add"},
+                    "nodeParent":54,
+                    "label":"addBtn",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":55,
                     "child":[
                         ]
                 }]
