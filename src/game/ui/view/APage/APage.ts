@@ -9,6 +9,7 @@ import BaseTest from '../BaseTest'
 import '../../../store/store'
 import store from '../../../store/store'
 import { ActionTypes, actionRequest, deleteTodo } from '../../../store/actions'
+import {changeData1} from '../../../store/actions'
 @RegisterMVC(BaseLayer, APageController, APageModel)
 export default class APage extends ui.view.APageUI {
   static viewKey = ViewConst.APage
@@ -24,6 +25,10 @@ export default class APage extends ui.view.APageUI {
     this.todoList.renderHandler = new Laya.Handler(this, this.updateTodo)
     this.todoList.on(Laya.Event.CLICK, this, this.todoListClick)
     this.addBtn.on(Laya.Event.CLICK, this, this.addTodo)
+    this.testBtn.on(Laya.Event.CLICK,this,()=>{
+      store.dispatch(changeData1(1))
+      console.log("finished:", store.getState())
+    })
   }
   private updateTodo(cell: Laya.Box, index) {
     const label = cell.getChildByName('label') as Laya.Label
@@ -41,6 +46,7 @@ export default class APage extends ui.view.APageUI {
       store.dispatch(actionRequest(ActionTypes.addTodoRequest, this.addInput.text))
       this.addInput.text = ''
     }
+    
   }
   public init() {
     // this.controller.addListener(
@@ -53,9 +59,10 @@ export default class APage extends ui.view.APageUI {
     // )
   }
 
-  public updateView() {
-    const { user, token, testData, todo } = store.getState()
-    this.contents.text = testData.data1
+  public onUpdateView(state) {
+    console.log(state)
+    const { user, token, testData, todo } = state
+    // this.contents.text = testData.data1
     // this.username.text = user.name
     // this.token.text = token
     this.todoList.array = todo

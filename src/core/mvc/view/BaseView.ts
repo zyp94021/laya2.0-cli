@@ -20,12 +20,22 @@ export namespace KUI {
     public initRes() {}
     public initView() {}
     public openCb(...args) {
-      this.updateView()
-      this.unsubscribe = store.subscribe(this.updateView.bind(this))
+      this.updateView(store.getState());
+      this.unsubscribe = store.subscribe(()=>this.updateView.bind(this)(store.getState()))
     }
     public closeCb(...args) {
       this.unsubscribe()
     }
-    public updateView() {}
+    public updateView(state?: any) {
+      this.stateListener.forEach(element => {
+        element.onStateChange(state);
+      });
+      console.log(" == elements", this.stateListener);
+      this.onUpdateView(state);
+    }
+    public onUpdateView(state?: any) {
+    }
+
+    public stateListener: {onStateChange: Function}[] = [];
   }
 }
