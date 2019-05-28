@@ -8,4 +8,7 @@
    <item name="view/ViewTest1.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="view/APage.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="view/BPage.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="view/MapView.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="view/Login.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="view/LoginSuccess.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

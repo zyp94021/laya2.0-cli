@@ -2,7 +2,7 @@ import { IView } from './interface/IView'
 
 import { ILayer } from './interface/ILayer'
 
-import { UI, controllerMgr, findByViewKey } from './MvcMgr'
+import { UI, findByViewKey } from './MvcMgr'
 import { bindEvent } from './UIEvent'
 
 export module mvc {
@@ -31,7 +31,7 @@ export module mvc {
     public openView(View, ...args): void {
       let _view = this.openViews.get(View.viewKey)
       if (_view) {
-        _view.openCb.apply(_view, args)
+        _view.onOpen.apply(_view, args)
         return
       }
       _view = this.getView(View.viewKey)
@@ -52,7 +52,6 @@ export module mvc {
       mvc.view = _view
       mvc.layer = layer
       bindEvent(mvc)
-      controllerMgr.register(mvc)
 
       this.setView(mvc.viewKey, _view)
       if (_view.init) _view.init()

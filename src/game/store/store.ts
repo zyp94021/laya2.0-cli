@@ -7,4 +7,5 @@ const sagaMiddleware = createSagaMiddleware()
 const enhancer = applyMiddleware(sagaMiddleware)
 const store = createStore(reducers, state as any, enhancer)
 sagaMiddleware.run(rootSaga)
-export default store
+const dispatch = store.dispatch
+export { store, dispatch }

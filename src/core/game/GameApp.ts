@@ -1,6 +1,6 @@
 import { Service } from '../service/Service'
 import { Dispatcher } from '../service/dispatcher/Dispatcher'
-import Socket from '../../net/Socket'
+import { Socket } from '../../net/Socket'
 import { StringUtil } from './utils/StringUtil'
 import { TimeUtil } from './utils/TimeUtil'
 
@@ -33,13 +33,13 @@ export default class GameApp {
   public static get TimeUtil(): TimeUtil {
     return TimeUtil.CreateOrGet()
   }
-  public static get Socket(): Socket {
-    return Socket.CreateOrGet()
+  public static get socket(): Socket {
+    return Socket.init('main', { ip: 'http://localhost:3001' })
   }
   public static get net(): GameNet {
     return GameNet.CreateOrGet()
   }
   public static get fetch(): Fetch {
-    return Fetch.init('main', { url: 'http://acgc.fun:3001' })
+    return Fetch.init('main', { url: 'http://localhost:3001' })
   }
 }

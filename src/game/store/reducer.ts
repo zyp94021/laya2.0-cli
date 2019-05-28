@@ -25,6 +25,16 @@ const changeToken = (state = '', action) => {
       return state
   }
 }
+const login = (state = false, action) => {
+  switch (action.type) {
+    case ActionTypes.loginSuccess:
+      return true
+    case ActionTypes.loginFail:
+      return false
+    default:
+      return state
+  }
+}
 const changeTestData1 = (state, action) => {
   return state
 }
@@ -38,5 +48,5 @@ export const todo = (state: any[] = [], action: AnyAction) => {
       return state
   }
 }
-const reducers = combineReducers({ testData: changeTestData, user: changeUsername, token: changeToken, todo })
+const reducers = combineReducers({ testData: changeTestData, user: changeUsername, token: changeToken, todo, login })
 export default reducers

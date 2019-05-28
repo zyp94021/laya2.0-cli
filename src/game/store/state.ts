@@ -15,4 +15,5 @@ export const state = {
     },
   },
   todo: [],
+  login: false,
 }

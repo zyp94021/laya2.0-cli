@@ -43,7 +43,6 @@ export default class Test extends Laya.Script {
     if (this.binding.length > 0) {
       this.callArray = this.binding.map(str => {
         const [field, pathStr, mapper] = str.split('|')
-        console.log(mapper)
         return { field, path: pathStr.split('.'), mapper: mapper ? eval(mapper) : undefined }
       })
 
@@ -57,7 +56,6 @@ export default class Test extends Laya.Script {
       if (owner) {
         const view = owner as KUI.BaseView
         view.stateListener.push(this)
-        console.log(' == redgitered')
       }
     }
   }
@@ -69,7 +67,6 @@ export default class Test extends Laya.Script {
   onStateChange(state: any) {
     this.callArray.forEach(c => {
       const result = c.path.reduce((prev, p) => (prev ? prev[p] : undefined), state)
-      console.log(' == call ', this.bindkey, result, state, this.owner)
       this.owner[c.field] = c.mapper ? c.mapper(result) : result;
     })
   }

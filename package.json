@@ -9,9 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production --config webpack.pro.js",
-    "serve": "http-server -s -g -c-1 -o",
-    "start": "webpack --mode development --watch --progress --color --config webpack.dev.js",
-    "dev": "webpack --mode development --progress --color --config webpack.dev.js"
+    "server": "http-server -s -g -c-1 -o",
+    "start": "webpack --mode development --watch --progress --color --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",

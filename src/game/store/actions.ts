@@ -14,6 +14,7 @@ export const ActionTypes = {
   addTodo: 'addTodo',
   deleteTodo: 'deleteTodo',
   deleteTodoRequest: 'deleteTodoRequest',
+  registerRequest: 'registerRequest',
 }
 export const changeData1 = data1 => {
   return {

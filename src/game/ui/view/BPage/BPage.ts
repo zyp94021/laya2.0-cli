@@ -1,12 +1,10 @@
 import { ui } from '../../../../ui/layaMaxUI'
 import { ViewConst } from '../../../../core/const/ViewConst'
 import { DialogLayer } from '../../../../core/mvc/layer/DialogLayer'
-import BPageController from './BPageController'
-import BPageModel from './BPageModel'
 import { RegisterMVC, closeView } from '../../../../core/mvc/MvcMgr'
-import store from '../../../store/store'
+import { store } from '../../../store/store'
 import { changeData1 } from '../../../store/actions'
-@RegisterMVC(DialogLayer, BPageController, BPageModel)
+@RegisterMVC(DialogLayer)
 export default class BPage extends ui.view.BPageUI {
   static viewKey = ViewConst.BPage
   constructor() {

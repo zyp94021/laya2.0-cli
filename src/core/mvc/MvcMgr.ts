@@ -1,5 +1,4 @@
 import * as v from './ViewMgr'
-import * as c from './ControllerManager'
 /**
  * MVC
  * [
@@ -10,8 +9,6 @@ import * as c from './ControllerManager'
  *    Layer,
  *    layer,Layer实例
  *    event,
- *    Controller,
- *    Model
  *  }
  * ]
  */
@@ -31,24 +28,20 @@ export const updateMVCItem = ({ viewKey, ...prop }) => {
   return mvc
 }
 let UI = Laya.stage
-const RegisterMVC = (Layer, Controller = null, Model = null) => {
+const RegisterMVC = Layer => {
   return View => {
     updateMVCItem({
       viewKey: View.viewKey,
       Layer,
-      Controller,
-      Model,
       View,
     })
-    console.log(View.argments)
     return View
   }
 }
 const setUIRoot = root => {
   UI = root
 }
-const controllerMgr = c.mvc.controllerMgr
 const viewMgr = v.mvc.viewMgr
 const openView = v.mvc.openView
 const closeView = v.mvc.closeView
-export { viewMgr, controllerMgr, openView, closeView, RegisterMVC, setUIRoot, MVC, UI }
+export { viewMgr, openView, closeView, RegisterMVC, setUIRoot, MVC, UI }

@@ -91,6 +91,37 @@ export module ui.view {
         }
     }
     REG("ui.view.LoadingUI",LoadingUI);
+    export class LoginUI extends BaseView {
+		public usernameInput:Laya.TextInput;
+		public passwordInput:Laya.TextInput;
+		public loginBtn:Laya.Button;
+		public registerBtn:Laya.Button;
+        public static  uiView:any ={"type":"BaseView","props":{"width":1920,"height":1080},"compId":2,"child":[{"type":"Sprite","props":{"y":1,"x":0,"width":1920,"height":1080},"compId":6,"child":[{"type":"Rect","props":{"width":1920,"lineWidth":1,"lineColor":"#ffffff","height":1080,"fillColor":"#868686"},"compId":7}]},{"type":"TextInput","props":{"y":419,"x":850,"width":279,"var":"usernameInput","skin":"comp/textinput.png","height":48},"compId":3},{"type":"TextInput","props":{"y":496,"x":850,"width":284,"var":"passwordInput","skin":"comp/textinput.png","height":49},"compId":4},{"type":"Button","props":{"y":641,"x":975,"width":159,"var":"loginBtn","skin":"comp/button.png","label":"login","height":49},"compId":5},{"type":"Button","props":{"y":636,"x":753,"width":175,"var":"registerBtn","skin":"comp/button.png","label":"register","height":53},"compId":8}],"loadList":["comp/textinput.png","comp/button.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(LoginUI.uiView);
+        }
+    }
+    REG("ui.view.LoginUI",LoginUI);
+    export class LoginSuccessUI extends BaseView {
+        public static  uiView:any ={"type":"BaseView","props":{"width":1920,"height":1080},"compId":2,"child":[{"type":"Label","props":{"y":410,"x":263,"text":"label","fontSize":50,"color":"#ffffff","binding":["text|user.name|(function(name){return \"name:\"+name})"]},"compId":3,"child":[{"type":"Script","props":{"binding":["text|user.name|(function(name){return \"name:\"+name})"],"runtime":"game/ui/view/APage/Test.ts"},"compId":4}]},{"type":"Label","props":{"y":569,"x":263,"text":"label","fontSize":50,"color":"#ffffff","binding":["text|token|(function(token){return 'token:'+token})"]},"compId":5,"child":[{"type":"Script","props":{"binding":["text|token|(function(token){return 'token:'+token})"],"runtime":"game/ui/view/APage/Test.ts"},"compId":6}]}],"loadList":[],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(LoginSuccessUI.uiView);
+        }
+    }
+    REG("ui.view.LoginSuccessUI",LoginSuccessUI);
+    export class MapViewUI extends BaseView {
+        public static  uiView:any ={"type":"BaseView","props":{"width":1920,"height":1080},"compId":2,"child":[{"type":"Clip","props":{"skin":"Characters/Tank_3.png","index":0,"clipY":4,"clipX":4,"centerY":0,"centerX":0},"compId":4}],"loadList":["Characters/Tank_3.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(MapViewUI.uiView);
+        }
+    }
+    REG("ui.view.MapViewUI",MapViewUI);
     export class ViewTestUI extends BaseView {
 		public tank:Laya.Clip;
 		public closeBtn:Laya.Button;

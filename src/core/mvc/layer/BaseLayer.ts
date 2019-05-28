@@ -15,15 +15,15 @@ export class BaseLayer extends Laya.Sprite implements ILayer {
 
   static layerKey = LayerConst.base
   public openView(view: IView, ...args): void {
-    if (view.openCb) {
-      view.openCb.apply(view, args)
+    if (view.onOpen) {
+      view.onOpen.apply(view, args)
     }
     this.mouseThrough = false
     this.addChild(view)
   }
   public closeView(view: IView): void {
-    if (view.closeCb) {
-      view.closeCb()
+    if (view.onClose) {
+      view.onClose()
     }
     this.removeChild(view)
     this.mouseThrough = this._children.length === 0

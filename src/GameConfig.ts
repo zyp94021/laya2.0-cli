@@ -6,8 +6,8 @@ import HLabel from "./core/game/script/HLabel"
 * 游戏初始化配置;
 */
 export default class GameConfig{
-    static width:number=640;
-    static height:number=1136;
+    static width:number=1920;
+    static height:number=1080;
     static scaleMode:string="showall";
     static screenMode:string="none";
     static alignV:string="middle";

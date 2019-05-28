@@ -3,7 +3,7 @@ import { IView } from '../../../core/mvc/interface/IView'
 import { ViewConst } from '../../../core/const/ViewConst'
 import { BaseLayer } from '../../../core/mvc/layer/BaseLayer'
 import { RegisterMVC, closeView } from '../../../core/mvc/MvcMgr'
-import store from '../../store/store'
+import { store } from '../../store/store'
 @RegisterMVC(BaseLayer)
 export default class Loading extends ui.view.LoadingUI implements IView {
   static viewKey = ViewConst.Loading
@@ -25,8 +25,8 @@ export default class Loading extends ui.view.LoadingUI implements IView {
       closeView(this)
     })
   }
-  public openCb(...args) {
-    super.openCb()
+  public onOpen(...args) {
+    super.onOpen()
     console.log('Loading open', args)
   }
   public updateView() {

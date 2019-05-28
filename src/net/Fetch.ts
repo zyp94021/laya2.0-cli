@@ -47,7 +47,7 @@ export class Fetch {
   public async post(api: string, body: any = undefined) {
     return this.send(api, { body: body ? JSON.stringify(body) : undefined, method: HttpMethod.post })
   }
-  private resHandle(res: Response) {
+  private async resHandle(res: Response) {
     const contentType = res.headers.get('Content-Type')
     if (contentType) {
       if (contentType.indexOf('json') > -1) {

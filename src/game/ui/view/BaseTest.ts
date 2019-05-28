@@ -8,7 +8,7 @@ import Loading from './Loading'
 import { RegisterMVC, openView, closeView } from '../../../core/mvc/MvcMgr'
 import { Click } from '../../../core/mvc/UIEvent'
 import GameApp from '../../../core/game/GameApp'
-import store from '../../store/store'
+import { store } from '../../store/store'
 import { changeToken, changeUsername } from '../../store/actions'
 @RegisterMVC(BaseLayer)
 export default class BaseTest extends ui.view.BaseTestUI implements IView {
@@ -47,8 +47,8 @@ export default class BaseTest extends ui.view.BaseTestUI implements IView {
     console.log(type)
     console.log(await GameApp.fetch.post('get', { a: [1, 2], c: 'hahahaha' }))
   }
-  public openCb() {
-    super.openCb()
+  public onOpen() {
+    super.onOpen()
     console.log('BaseTest open')
   }
   public updateView() {

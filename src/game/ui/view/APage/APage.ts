@@ -3,14 +3,12 @@ import BPage from '../BPage/BPage'
 import { ViewConst } from '../../../../core/const/ViewConst'
 import { BaseLayer } from '../../../../core/mvc/layer/BaseLayer'
 import { RegisterMVC, openView } from '../../../../core/mvc/MvcMgr'
-import APageController from './APageController'
-import APageModel from './ApageModel'
 import BaseTest from '../BaseTest'
 import '../../../store/store'
-import store from '../../../store/store'
+import { store } from '../../../store/store'
 import { ActionTypes, actionRequest, deleteTodo } from '../../../store/actions'
-import {changeData1} from '../../../store/actions'
-@RegisterMVC(BaseLayer, APageController, APageModel)
+import { changeData1 } from '../../../store/actions'
+@RegisterMVC(BaseLayer)
 export default class APage extends ui.view.APageUI {
   static viewKey = ViewConst.APage
   constructor() {
@@ -25,9 +23,9 @@ export default class APage extends ui.view.APageUI {
     this.todoList.renderHandler = new Laya.Handler(this, this.updateTodo)
     this.todoList.on(Laya.Event.CLICK, this, this.todoListClick)
     this.addBtn.on(Laya.Event.CLICK, this, this.addTodo)
-    this.testBtn.on(Laya.Event.CLICK,this,()=>{
+    this.testBtn.on(Laya.Event.CLICK, this, () => {
       store.dispatch(changeData1(1))
-      console.log("finished:", store.getState())
+      console.log('finished:', store.getState())
     })
   }
   private updateTodo(cell: Laya.Box, index) {
@@ -46,7 +44,6 @@ export default class APage extends ui.view.APageUI {
       store.dispatch(actionRequest(ActionTypes.addTodoRequest, this.addInput.text))
       this.addInput.text = ''
     }
-    
   }
   public init() {
     // this.controller.addListener(
@@ -67,8 +64,8 @@ export default class APage extends ui.view.APageUI {
     // this.token.text = token
     this.todoList.array = todo
   }
-  public openCb(args) {
-    super.openCb()
+  public onOpen(args) {
+    super.onOpen()
     var html = "<span style='fontSize:30' color='#67fc2c'>富文本</span>"
     html += "<img style='height:50;width:50' src='Characters/Tank_4.png'></img>"
     html += "<span style='fontSize:20' color='#fff'>测试</span>"

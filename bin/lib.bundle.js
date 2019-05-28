@@ -19298,7 +19298,7 @@ process.umask = function() { return 0; };
 /*!***********************************************************************!*\
   !*** ./node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js ***!
   \***********************************************************************/
-/*! exports provided: default, CANCEL, SAGA_LOCATION, buffers, detach, runSaga, END, isEnd, eventChannel, channel, multicastChannel, stdChannel */
+/*! exports provided: CANCEL, SAGA_LOCATION, buffers, detach, runSaga, END, isEnd, eventChannel, channel, multicastChannel, stdChannel, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
