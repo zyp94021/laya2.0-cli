@@ -41,6 +41,7 @@ export module mvc {
         return
       }
       _view = this.createView(View)
+      this.openViews.set(View.viewKey, _view)
       _view.layer.openView(_view, ...args)
     }
     private createView(View) {

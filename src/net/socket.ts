@@ -43,6 +43,9 @@ export class Socket extends Singleton {
   addEvent(event, _this, callback) {
     this.socket.on(event, callback.bind(_this))
   }
+  removeEvent(event) {
+    this.socket.removeAllListeners(event)
+  }
   sendEvent(event, message) {
     this.socket.emit(event, message)
   }

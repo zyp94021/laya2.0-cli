@@ -6,6 +6,7 @@ import { LoginView } from '../game/ui/view/LoginView'
 import { store } from '../game/store/store'
 import { ActionTypes } from '../game/store/actions'
 import { LoginSuccess } from '../game/ui/view/LoginSuccess'
+import GameApp from '../core/game/GameApp';
 export default class MainScene extends ui.scene.MainSceneUI {
   public constructor() {
     super()
@@ -28,8 +29,9 @@ export default class MainScene extends ui.scene.MainSceneUI {
     console.log(`login:${login}`)
     if (login) {
       closeView(LoginView)
-      if (!viewMgr.isOpen(LoginSuccess)) {
-        openView(LoginSuccess)
+      if (!viewMgr.isOpen(APage)) {
+        GameApp.socket.connect()
+        openView(APage)
       }
     } else {
       if (!viewMgr.isOpen(LoginView)) {

@@ -6,8 +6,9 @@ import { RegisterMVC, openView } from '../../../../core/mvc/MvcMgr'
 import BaseTest from '../BaseTest'
 import '../../../store/store'
 import { store } from '../../../store/store'
-import { ActionTypes, actionRequest, deleteTodo } from '../../../store/actions'
+import { ActionTypes, actionRequest, deleteTodo, addTodo } from '../../../store/actions'
 import { changeData1 } from '../../../store/actions'
+import GameApp from '../../../../core/game/GameApp'
 @RegisterMVC(BaseLayer)
 export default class APage extends ui.view.APageUI {
   static viewKey = ViewConst.APage
@@ -36,12 +37,14 @@ export default class APage extends ui.view.APageUI {
   private todoListClick(e) {
     if (e.target.var === 'deleteBtn') {
       const box = e.target.parent as Laya.Box
-      store.dispatch(actionRequest(ActionTypes.deleteTodoRequest, box.dataSource.id))
+      // store.dispatch(actionRequest(ActionTypes.deleteTodoRequest, box.dataSource.id))
+      GameApp.socket.sendEvent('delete', { id: box.dataSource.id })
     }
   }
   private addTodo() {
     if (this.addInput.text !== '') {
-      store.dispatch(actionRequest(ActionTypes.addTodoRequest, this.addInput.text))
+      // store.dispatch(actionRequest(ActionTypes.addTodoRequest, this.addInput.text))
+      GameApp.socket.sendEvent('add', { message: this.addInput.text })
       this.addInput.text = ''
     }
   }
@@ -77,5 +80,17 @@ export default class APage extends ui.view.APageUI {
     console.log(this.dd)
 
     store.dispatch(actionRequest(ActionTypes.getTodoRequest))
+    GameApp.socket.addEvent('retureDelete', this, this.returnDelete)
+    GameApp.socket.addEvent('retureAdd', this, this.returnAdd)
+  }
+  public onClose() {
+    GameApp.socket.removeEvent('retureDelete')
+    GameApp.socket.removeEvent('retureAdd')
+  }
+  returnDelete({ id }) {
+    store.dispatch(deleteTodo(id))
+  }
+  returnAdd({ id, message }) {
+    store.dispatch(addTodo([{ id, message }]))
   }
 }
