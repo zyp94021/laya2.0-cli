@@ -34,12 +34,12 @@ export default class GameApp {
     return TimeUtil.CreateOrGet()
   }
   public static get socket(): Socket {
-    return Socket.init('main', { ip: 'http://localhost:3001' })
+    return Socket.init('main', { ip: 'http://acgc.fun:3001' })
   }
   public static get net(): GameNet {
     return GameNet.CreateOrGet()
   }
   public static get fetch(): Fetch {
-    return Fetch.init('main', { url: 'http://localhost:3001' })
+    return Fetch.init('main', { url: 'http://acgc.fun:3001' })
   }
 }

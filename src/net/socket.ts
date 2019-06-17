@@ -46,7 +46,7 @@ export class Socket extends Singleton {
   removeEvent(event) {
     this.socket.removeAllListeners(event)
   }
-  sendEvent(event, message) {
+  sendEvent(event, message = null) {
     this.socket.emit(event, message)
   }
   public disconnect() {

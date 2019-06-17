@@ -5,7 +5,7 @@ import { BaseLayer } from '../../../../core/mvc/layer/BaseLayer'
 import { RegisterMVC, openView } from '../../../../core/mvc/MvcMgr'
 import BaseTest from '../BaseTest'
 import '../../../store/store'
-import { store } from '../../../store/store'
+import { store, dispatch } from '../../../store/store'
 import { ActionTypes, actionRequest, deleteTodo, addTodo } from '../../../store/actions'
 import { changeData1 } from '../../../store/actions'
 import GameApp from '../../../../core/game/GameApp'
@@ -79,18 +79,24 @@ export default class APage extends ui.view.APageUI {
     this.dd.innerHTML = html
     console.log(this.dd)
 
-    store.dispatch(actionRequest(ActionTypes.getTodoRequest))
-    GameApp.socket.addEvent('retureDelete', this, this.returnDelete)
-    GameApp.socket.addEvent('retureAdd', this, this.returnAdd)
+    // store.dispatch(actionRequest(ActionTypes.getTodoRequest))
+
+    GameApp.socket.sendEvent('all')
+    GameApp.socket.addEvent('delete', this, this.returnDelete)
+    GameApp.socket.addEvent('add', this, this.returnAdd)
+    GameApp.socket.addEvent('all', this, result => {
+      dispatch(addTodo(result.map(item => ({ id: item.id, message: item.message }))))
+    })
   }
   public onClose() {
-    GameApp.socket.removeEvent('retureDelete')
-    GameApp.socket.removeEvent('retureAdd')
+    GameApp.socket.removeEvent('delete')
+    GameApp.socket.removeEvent('add')
+    GameApp.socket.removeEvent('all')
   }
   returnDelete({ id }) {
-    store.dispatch(deleteTodo(id))
+    dispatch(deleteTodo(id))
   }
   returnAdd({ id, message }) {
-    store.dispatch(addTodo([{ id, message }]))
+    dispatch(addTodo([{ id, message }]))
   }
 }
