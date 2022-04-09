@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "socket.io-client": "^2.2.0",
